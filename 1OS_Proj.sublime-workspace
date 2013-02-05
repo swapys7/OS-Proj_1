@@ -1,0 +1,479 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"row",
+				"rowLine"
+			],
+			[
+				"star",
+				"startingGameState"
+			],
+			[
+				"succ",
+				"successorNode"
+			],
+			[
+				"s",
+				"successorGN"
+			],
+			[
+				"su",
+				"successorNode"
+			],
+			[
+				"suc",
+				"successorFN"
+			],
+			[
+				"fo",
+				"for	For Loop"
+			],
+			[
+				"cl",
+				"class"
+			],
+			[
+				"c",
+				"cl	class"
+			],
+			[
+				"a",
+				"are"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 107.0,
+		"selected_items":
+		[
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ke",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"lint",
+				"SublimeLinter: Extract Annotations"
+			],
+			[
+				"disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"edit",
+				"Project: Edit"
+			],
+			[
+				"projec",
+				"Project: Save As"
+			],
+			[
+				"keyb",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"syC",
+				"Set Syntax: C"
+			],
+			[
+				"sn",
+				"Snippet: New Class"
+			],
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"sy py",
+				"Set Syntax: Python"
+			],
+			[
+				"syn js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"set ",
+				"Set Syntax: C#"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/README.md",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/Makefile.kernel",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/stuffADoAboutProj1.txt",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/src/Makefile.build",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Settings/Session.sublime_session",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Settings/SideBarEnhancements.json",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/systemHello.c",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/SystemsHW1.txt",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/systemVprocedureCall.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/OS.sublime-workspace",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/DELETE.py",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/bin/sysHello",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/DELETE/DELETE.c",
+		"/hello/hello.c",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/bin/testtime",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/git/searchAssn/1HW",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/AI_Projects/eightpuzzle.py",
+		"/Users/Ethan/Desktop/TODO List SoftLinks/pal2.py",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/AI_Projects/search.py",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/git/searchAssn/search.py",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/git/searchAssn/pacman.py",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/git/searchAssn/game.py",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/git/searchAssn/aStarAlgorithm.py",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/git/searchAssn/searchAgents.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Misc/TextMate/Python-Dev.tmbundle/Snippets/2 to 3 - Module Deletion (docs).tmSnippet",
+		"/Users/Ethan/Downloads/Python-2.7.3/Lib/this.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Lib/warnings.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Lib/token.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Lib/numbers.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Lib/codeop.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Lib/code.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Lib/binhex.py",
+		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/TxtBk-Python/agents.py",
+		"/Users/Ethan/Dropbox/MLease/DatasetFromEmail/Topics/Indri/strohmansScript.py",
+		"/Users/Ethan/Downloads/Python-2.7.3/Mac/IDLE/idlemain.py",
+		"/Applications/valgrind-3.8.0/none/tests/ppc32/test_isa_2_06_part2.c",
+		"/Users/Ethan/src/neo4django/neo4django/gremlin/library.groovy",
+		"/Users/Ethan/Google Drive/Documents/Cool Photos/Is this going to be on the midterm   - New Yorker Cartoon by Ariel Molvig_files/ga.js",
+		"/Users/Ethan/Applications/Myjython/jython/src/org/python/core/PyTuple.java",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/User/Default ().sublime-keymap",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/galagosearch-core/src/main/java/org/galagosearch/core/store/SnippetGenerator.java",
+		"/Users/Ethan/Applications/lemur-4.12/install-sh",
+		"/Users/Ethan/Desktop/DELETEME.md",
+		"/Users/Ethan/.vim/bundle/EasyColour/colors/my_colour_scheme.txt",
+		"/Users/Ethan/.vim/bundle/EasyColour/colors/default_modified.txt",
+		"/Users/Ethan/.vim/bundle/EasyColour/rgb.txt",
+		"/Users/Ethan/Desktop/vimies.txt",
+		"/Users/Ethan/Downloads/neo4j-community-1.6.3/data/README.txt",
+		"/Users/Ethan/Downloads/neo4j-community-1.6.3/UPGRADE.txt",
+		"/Users/Ethan/Downloads/neo4j-community-1.6.3/plugins/README.txt",
+		"/Users/Ethan/Google Drive/Documents/Cool Photos/Is this going to be on the midterm   - New Yorker Cartoon by Ariel Molvig_files/core053.js",
+		"/Users/Ethan/Google Drive/Documents/Cool Photos/Is this going to be on the midterm   - New Yorker Cartoon by Ariel Molvig.html",
+		"/Users/Ethan/Google Drive/Documents/Cool Photos/Is this going to be on the midterm   - New Yorker Cartoon by Ariel Molvig_files/widget100.css",
+		"/Users/Ethan/Downloads/README.txt",
+		"/Users/Ethan/Applications/galago-3.3/src/main/site/apt/retrieval.apt",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/src/main/site/apt/indexing.apt",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/src/main/site/apt/index.apt",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/src/main/site/apt/quick-start.apt",
+		"/Users/Ethan/Applications/galago-3.3/core/target/classes/stopwords/inquery",
+		"/Users/Ethan/Dropbox/CSyStuff/latex-merge/lex.yy.c",
+		"/Users/Ethan/Dropbox/CSyStuff/latex-merge/Makefile",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/BUILD",
+		"/Users/Ethan/Dropbox/MLease/galagoTrial/index/buildManifest.json",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/LICENSE",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/README",
+		"/Users/Ethan/Dropbox/MLease/galagosearch/galagosearch-core/src/main/galagotype/NumberWordPosition.galagotype",
+		"/Users/Ethan/Applications/IndriWJava/swig/src/csharp/ConflationPattern.cs",
+		"/Users/Ethan/Applications/lemur-4.12/app/depend/RetEval.d",
+		"/Users/Ethan/Applications/lemur-4.12/app/depend/GenerateQueryModel.d",
+		"/Users/Ethan/Applications/lemur-4.12/data/keyparam/simple_okapi_param",
+		"/Users/Ethan/Applications/indri-5.3/depend/PorterStemmerTransformation.d",
+		"/Users/Ethan/Applications/indri-5.3/depend/Arabic_Stemmer_utf8.d",
+		"/Users/Ethan/Applications/indri-5.3/modifyfields/ModifyFields.cpp",
+		"/Users/Ethan/Applications/indri-5.3/modifyfields/ModifyFields-VS2008.vcproj",
+		"/Users/Ethan/Applications/indri-5.3/lang/java/lib/Makefile",
+		"/Users/Ethan/Dropbox/CSyStuff/Book_Work/Learning_Perl/Ch5/betty",
+		"/Users/Ethan/Applications/indri-5.3/depend/KrovetzStemmerTransformation.d",
+		"/Users/Ethan/Google Drive/Drawing1",
+		"/Users/Ethan/Dropbox/CSyStuff/Programming/CtHW/Makefile",
+		"/Users/Ethan/Dropbox/CSyStuff/Vim Stuff/CoolVimTricks.txt",
+		"/Users/Ethan/Dropbox/MLease/DatasetFromEmail/Topics/Indri/bareTitles.txt",
+		"/Users/Ethan/Desktop/whyIUsePython.txt",
+		"/Users/Ethan/Downloads/Imaging-1.1.7/README",
+		"/Users/Ethan/Desktop/whyIUsePython.py",
+		"/Users/Ethan/Dropbox/MLease/DatasetFromEmail/Qrels/Standard/Qrels2",
+		"/Users/Ethan/Applications/trec_eval.9.0/README",
+		"/Users/Ethan/Dropbox/MLease/DatasetFromEmail/Topics/Indri/no<top>.txt",
+		"/Users/Ethan/Dropbox/MLease/DatasetFromEmail/Topics/Indri/inReformatting.txt",
+		"/Users/Ethan/Downloads/lisp_test_cases/README.txt",
+		"/Users/Ethan/Dropbox/Kindle/My Clippings.txt",
+		"/Users/Ethan/Dropbox/JRo/Django/Team-West-API-Django-master/build/Django/LICENSE",
+		"/Users/Ethan/Dropbox/JRo/Django/Team-West-API-Django-master/build/Django/PKG-INFO",
+		"/Users/Ethan/Dropbox/JRo/Django/Team-West-API-Django-master/build/Django/docs/faq/install.txt",
+		"/Users/Ethan/Dropbox/JRo/Django/Team-West-API-Django-master/build/Django/docs/faq/help.txt",
+		"/Users/Ethan/Dropbox/JRo/Django/Team-West-API-Django-master/build/Django/extras/README.TXT",
+		"/Users/Ethan/Dropbox/JRo/Django/Team-West-API-Django-master/requirements.txt",
+		"/Users/Ethan/Downloads/Python-3.3.0/Python/compile.c",
+		"/Users/Ethan/Downloads/Python-3.3.0/Grammar/Grammar",
+		"/Users/Ethan/Dropbox/JRo/Django/Blog/mysite/blog/stuck.txt",
+		"/pip-1.0/build/Django/django/contrib/admin/templates/admin/base_site.html",
+		"/Users/Ethan/Dropbox/MLease/DatasetFromEmail/Qrels/Standard/Qrels.txt",
+		"/Users/Ethan/Desktop/Oweoweo",
+		"/Users/Ethan/Dropbox/CS429/429HW/429HW7/445.lisp",
+		"/Users/Ethan/Dropbox/CSyStuff/Vim Stuff/vimSSH.txt",
+		"/Users/Ethan/Desktop/bashrc",
+		"/Users/Ethan/Desktop/dir_colors",
+		"/Applications/valgrind-3.8.0/exp-bbv/tests/amd64-linux/Makefile",
+		"/Users/Ethan/Dropbox/CS347/347HW/347Lab8/Lab8Queries.sql",
+		"/Users/Ethan/Dropbox/CS429/429HW/429HW1/HW1/Debug/makefile",
+		"/Users/Ethan/Dropbox/CS429/429HW/429HW1/Prob59/Debug/makefile",
+		"/Users/Ethan/Dropbox/CS429/429HW/429HW1/Prob59/Debug/prob_59.d",
+		"/Users/Ethan/Dropbox/CSyStuff/CollectiveIntelligence/Chapter2/recommendations.py",
+		"/Users/Ethan/Dropbox/CSyStuff/CollectiveIntelligence/Chapter2/data/movielens/u.txt",
+		"/Users/Ethan/Applications/indri-5.3/site-search/README",
+		"/Users/Ethan/Downloads/clef2007clsrENv5.0/Qrels/Standard/Qrels.txt",
+		"/Users/Ethan/Downloads/rapidsvn-0.12.0-1 2/README",
+		"/Users/Ethan/Downloads/fibrec1.lisp",
+		"/Users/Ethan/Downloads/README-release-5.3.txt",
+		"/Users/Ethan/Applications/lemur-4.12/app/depend/ParseInQueryOp.d",
+		"/Users/Ethan/Dropbox/MLease/DatasetFromEmail/Topics/TREC/EnglishTopics_2007.trec",
+		"/Users/Ethan/Applications/lemur-4.12/app/BuildIndex-VS2008.vcproj",
+		"/Users/Ethan/Applications/lemur-4.12/data/qrel",
+		"/Users/Ethan/javacc/build.xml",
+		"/Users/Ethan/Dropbox/MLease/stdTitleQuery/results/baselineTitleResults.indri"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"N_iterations",
+			"res",
+			"hello",
+			"\"",
+			"write",
+			"    //",
+			"write",
+			"string",
+			"something",
+			"super",
+			", ",
+			"world",
+			"hello",
+			"sequence",
+			"write",
+			"wr",
+			"puzzle",
+			"class",
+			"EightPuzzleState",
+			"3",
+			", ",
+			"getwall",
+			"layout",
+			"gamestateda",
+			"gameStated",
+			"GameStateData",
+			"GameState",
+			"GameSate",
+			"GameState",
+			"currentPos",
+			"hash",
+			"__hash__",
+			"-l",
+			"gamestate",
+			"class",
+			"gamestat",
+			"left",
+			"append",
+			"diff",
+			"dir",
+			"right",
+			"upd",
+			"ui",
+			"ls",
+			"<top",
+			"<num>4",
+			"104449",
+			"text",
+			"056149'",
+			"056149",
+			"JVM",
+			"<MANUALKEYWORD>",
+			"<NAME>",
+			"<INTERVIEWDATA>",
+			"<INTERV",
+			"<TEXT>",
+			"query",
+			"p1",
+			"[p1",
+			"prefs",
+			"vintage",
+			"num",
+			"lambda",
+			"holdy",
+			"qrel",
+			"sql_",
+			"sql_stmt",
+			"sqlquery",
+			"FROM",
+			"lunbar"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.anypreter":
+	{
+		"height": 118.0
+	},
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"work",
+				"OS.sublime-workspace"
+			],
+			[
+				"te",
+				"bin/testtime"
+			],
+			[
+				"shw",
+				"SystemsHW1.txt"
+			],
+			[
+				"s",
+				"systemHello.c"
+			],
+			[
+				"set",
+				"/Users/Ethan/Applications/galagosearch-1.04/src/galagosearch-core/src/main/java/org/galagosearch/core/eval/stat/Fmath.java"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/OS.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 167.0,
+	"status_bar_visible": true
+}
