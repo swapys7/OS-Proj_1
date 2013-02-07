@@ -1,10 +1,110 @@
 OS-Proj_1
 =========
 
-Current Ideas:
+Currently Working On:
 ==
 
-1. Maybe we need to implement a blocked queue list
+
+§2.2.2 Alarm Clock Description
+--
+
+The current version "_busy waits_", spinning in a loop, checking the current time, and calling thread_yield(); until time is up. *Reimplement it to avoid busy waiting*.
+
+Things for Knowing of:
+--
+
+1. Unless the system is otherwise idle, the thread need not wake up after _exactly_ x ticks. It just needs to be put on the `ready queue` after the correct amount of time.
+
+
+Current Ideas:
+--
+
+1. We need to implement a wait-queue list or some other kind of list
+
+1. I think the idea is to use a Semaphore to take the thread off the ready_list and put it on a list of threads waiting on a Semaphore by using the elem member of the struct thread.
+
+1. Check out the /* Statistics. */ section of `thread.c`, it keeps track of `timer_ticks` and `thread_ticks`. I think that is important.
+
+1. How does `schedule()` work?
+    * Apparently it disables interrupts, how does it do that?
+
+1. What is `wait()` in `devices/intq.c` "whose callers are responsible for reenabling interrupts" (§2.3.0 FAQ)
+
+1. There are a host of functions in `thread.c` that might be worth checking out.
+
+The Other Assignment in this Assignment:
+==
+
+§2.2.3 Priority Scheduling
+--
+
+1. Implement priority scheduling in Pintos.
+    * Priorities range from 0 to 63, where higher is higher
+
+1. Implement priority donation to deal with the issue of "priority inversion". Only for the locks, not the other constructs.
+
+    * This is for the situation where H is waiting for a lock held by L, but L never gets to run
+
+    * This must still work in cases of nested donation, up to 8 levels!:
+        * H is waiting for M which is waiting for L, so H must levitate L to H, then M to H, then run.
+    * H will donate to L with its lock, even if L is READY but not RUNNING
+
+1. Implement the following two functions, for which only the skeletons have been provided in `threads/thread.c`.
+
+    * Function: void thread_set_priority (int new_priority);
+        1. Sets the current thread''s priority to new_priority.
+        1. If the current thread no longer has the highest priority, yields.
+
+    * Function: int thread_get_priority (void);
+        1. Returns the current thread''s priority.
+        1. In the presence of priority donation, returns the higher (donated); priority.
+
+    * You need not provide any interface to allow a thread to directly modify other threads'' priorities.
+
+Ideas:
+--
+
+The True-Priority should be one thing, and the Highest-Donated-Priority should be a completely different field.
+
+Files/Lines they Modified to Make Reference solution:
+==
+ 1. `devices/timer.c`       |   42 +++++-
+    * Contains timer_sleep(); itself
+    * Probably won''t need to modify anything else in it
+
+ 1. `threads/fixed-point.h` |  120 ++++++++++++++++++
+    * I don''t see this file anywhere, maybe they made it !
+
+ 1. `threads/synch.c`       |   88 ++++++++++++-
+    * semaphores, locks, condition variables
+
+ 1. `threads/thread.c`      |  196 ++++++++++++++++++++++++++----
+    * Initializes lists, manipulates threads, calls main to start things out, does the scheduling
+
+ 1. `threads/thread.h`      |   23 +++
+    * I think adding 23 lines to this means they added a couple methods to `thread.c` and had to declare them?
+
+ * 5 files changed, 440 insertions(+); 29 deletions(-);
+
+
+In General, What else Needs to Be Done:
+==
+
+The Design Doc
+--
+
+It''s saved in the base directory, just like this file, it is called threads_design.txt
+
+Follow the C Style Guide
+--
+It is in `Chrome/Classes/OSs/C Style Guide`
+
+1. Summarize major sections of code
+1. Use meaningful variable names
+1. Describe what function does, parameters, and return values
+1. Don''t use extra whitespace inside brackets and braces
+
+
 
 Initial Test Results
 =======
@@ -74,7 +174,7 @@ Current Test Results
 
 §1.1 Getting Started
 -
-*Here's what it looks like Project 1 will entail:*
+*Here is what it looks like Project 1 will entail:*
 
 1. Modify Base Kernel in threads/
 2. Modify Timer implementation in devices/
@@ -93,7 +193,7 @@ Design
 
 1. In the end it may be more worth while to make sure the design document is perfect than to spend hours trying to pass that one last test.
 
-2. Copy new or modified `struct`, `struct member`, `global`, `typedef`, `enumeration`, and `static` declarations into the design document, to highlight for us the actual changes to data structures. Identify each's purpose in less than 25 words.
+2. Copy new or modified `struct`, `struct member`, `global`, `typedef`, `enumeration`, and `static` declarations into the design document, to highlight for us the actual changes to data structures. Identify each''s purpose in less than 25 words.
 
 3. Describe the `algorithms` that make the code work
 
@@ -105,11 +205,11 @@ Design
 
 7. Add comments to every definition of something
 
-§1.3 Don't Cheat
+§1.3 Do Not Cheat
 -
 1. You may use public libraries
  * E.g. public classes for queues, trees, etc.
-2. You may look at the real Linux implementation (cite the source)
+2. You may look at the real Linux implementation (cite the source);
 
 3. You may _not_ look at the code of someone else who completed this project
 
@@ -124,11 +224,11 @@ Design
 
 1. Using the GDB debugger, slowly trace through a context switch to see what happens (see section E.5 GDB). You can set a breakpoint on schedule() to start out, and then single-step from there.(1) Be sure to keep track of each thread's address and state, and what procedures are on the call stack for each thread. You will notice that when one thread calls switch_threads(), another thread starts running, and the first thing the new thread does is to return from switch_threads(). You will understand the thread system once you understand why and how the switch_threads() that gets called is different from the switch_threads() that returns. See section A.2.3 Thread Switching, for more information.
 
-2. Don't declare large data structures as non-static local variables, e.g. int buf[1000];. Alternatives to stack allocation include the page allocator and the block allocator (see section A.5 Memory Allocation).
+2. Don't declare large data structures as non-static local variables, e.g. int buf[1000];. Alternatives to stack allocation include the page allocator and the block allocator (see section A.5 Memory Allocation);
 
 §2.1.2 Source Files
 
-1. In `init.c/h` you may want to add your own initialization code to main(), see A.1.3 for details
+1. In `init.c/h` you may want to add your own initialization code to main(); see A.1.3 for details
 
 2. Much of your work will take place in `thread.c/h`, see A.2.1, and A.2 for details
 
@@ -140,21 +240,21 @@ Design
 
 §2.1.2.2 "lib" files
 
-1. `kernel/list.c/h` doubly linked list you'll need to use
+1. `kernel/list.c/h` doubly linked list you will need to use
 
 §2.1.3 Synchronization
 
-1. Read A.3 on Synchronization, and the comments in `threads/synch.c`to figure out what primitives to use in what situation
+1. Read A.3 on Synchronization, and the comments in `threads/synch.c` to figure out what primitives to use in what situation
 
-2. It says interrupt handlers can't sleep, so they can't acqure locks, so disabling them is the only way to allow to synchronously share data with the kernel thread.
+2. It says interrupt handlers can not sleep, so they cannot acqure locks, so disabling them is the only way to allow to synchronously share data with the kernel thread.
 
-    * Why can't interrupt handlers sleep?
+    * Why cannot interrupt handlers sleep?
 
 3. Use semaphores, locks, and condition variables to solve synch. problems instead of just turning interrupts off
 
 4. Remove debugging code before turning the project in
 
-5. Don't do "busy waiting", e.g. a tight loop of thread_yield()'s
+5. Do not do "busy waiting", e.g. a tight loop of thread_yield()'s;
 
 §2.1.4 Development Suggestions
 
@@ -172,18 +272,22 @@ Design
 2. Probably want to read the template for it early on in starting the project
 
 §2.2.2 Alarm Clock
--
+--------
 
-1. Reimplement timer_sleep()
+1. Reimplement timer_sleep();
 
     * defined in devices/timer.c.
     * Although a working implementation is provided, it "busy waits," that is, it spins in a loop checking the current time and calling thread_yield() until enough time has gone by.
     * Reimplement it to avoid busy waiting.
     * There are TIMER_FREQ timer ticks per second
 
-§2.2.3 Priority Scheduling
+_(Didn''t Take Notes for a While)_;
 
-1.
+§2.3.2 Priority Scheduling FAQ
+--
+
+1. If a thread added to the ready list has higher priority than the running thread, the correct behavior is to immediately yield the processor. It is not acceptable to wait for the next timer interrupt.
+
 
 
 For live markdown previews, see

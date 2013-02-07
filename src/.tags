@@ -1,0 +1,886 @@
+ASSERT	TAGS	?^ASSERT	TAGS	/^#define ASSERT(31,981$/$?
+BITMASK	TAGS	?^BITMASK	TAGS	/^#define BITMASK(15,288$/$?
+Copyright	LICENSE	?^    Copyright (C) 2004, 2005, 2006 Board of Truste?
+ifeq	Make.config	?^ifeq ($(strip $(shell command -v $(CCPROG) 2> /dev?
+ARENA_MAGIC	threads/malloc.c	?^#define ARENA_MAGIC 0x9a548eed$?
+ASSERT	lib/debug.h	?^#define ASSERT(CONDITION) ((void) 0)$?
+BITMASK	threads/vaddr.h	?^#define BITMASK(SHIFT, CNT) (((1ul << (CNT)) - 1) ?
+BLOCK_SECTOR_SIZE	devices/block.h	?^#define BLOCK_SECTOR_SIZE 512$?
+CHANNEL_CNT	devices/ide.c	?^#define CHANNEL_CNT 2$?
+CHAR_BIT	lib/limits.h	?^#define CHAR_BIT 8$?
+CHAR_MAX	lib/limits.h	?^#define CHAR_MAX UCHAR_MAX$?
+CHAR_MIN	lib/limits.h	?^#define CHAR_MIN 0$?
+CMD_IDENTIFY_DEVICE	devices/ide.c	?^#define CMD_IDENTIFY_DEVICE 0xec        /* IDENTIF?
+CMD_READ_SECTOR_RETRY	devices/ide.c	?^#define CMD_READ_SECTOR_RETRY 0x20      /* READ SE?
+CMD_WRITE_SECTOR_RETRY	devices/ide.c	?^#define CMD_WRITE_SECTOR_RETRY 0x30     /* WRITE S?
+CMOS_REG_IO	devices/rtc.c	?^#define CMOS_REG_IO	0x71    /* Contains the select?
+CMOS_REG_SET	devices/rtc.c	?^#define CMOS_REG_SET	0x70    /* Selects CMOS regis?
+COL_CNT	devices/vga.c	?^#define COL_CNT 80$?
+CONTROL_REG	devices/shutdown.c	?^#define CONTROL_REG 0x64$?
+CR0_EM	threads/start.S	?^#define CR0_EM 0x00000004      /* (Floating-point)?
+CR0_PE	threads/start.S	?^#define CR0_PE 0x00000001      /* Protection Enabl?
+CR0_PG	threads/start.S	?^#define CR0_PG 0x80000000      /* Paging. */$?
+CR0_WP	threads/start.S	?^#define CR0_WP 0x00010000      /* Write-Protect en?
+CTL_SRST	devices/ide.c	?^#define CTL_SRST 0x04           /* Software Reset.?
+DATA_REG	devices/kbd.c	?^#define DATA_REG 0x60$?
+DEVICES_BLOCK_H	devices/block.h	?^#define DEVICES_BLOCK_H$?
+DEVICES_IDE_H	devices/ide.h	?^#define DEVICES_IDE_H$?
+DEVICES_INPUT_H	devices/input.h	?^#define DEVICES_INPUT_H$?
+DEVICES_INTQ_H	devices/intq.h	?^#define DEVICES_INTQ_H$?
+DEVICES_KBD_H	devices/kbd.h	?^#define DEVICES_KBD_H$?
+DEVICES_PARTITION_H	devices/partition.h	?^#define DEVICES_PARTITION_H$?
+DEVICES_PIT_H	devices/pit.h	?^#define DEVICES_PIT_H$?
+DEVICES_SERIAL_H	devices/serial.h	?^#define DEVICES_SERIAL_H$?
+DEVICES_SHUTDOWN_H	devices/shutdown.h	?^#define DEVICES_SHUTDOWN_H$?
+DEVICES_SPEAKER_H	devices/speaker.h	?^#define DEVICES_SPEAKER_H$?
+DEVICES_TIMER_H	devices/timer.h	?^#define DEVICES_TIMER_H$?
+DEVICES_VGA_H	devices/vga.h	?^#define DEVICES_VGA_H$?
+DEV_DEV	devices/ide.c	?^#define DEV_DEV 0x10            /* Select device: ?
+DEV_LBA	devices/ide.c	?^#define DEV_LBA 0x40            /* Linear based ad?
+DEV_MBS	devices/ide.c	?^#define DEV_MBS 0xa0            /* Must be set. */?
+DIM	examples/matmult.c	?^#define DIM 128$?
+DIV_ROUND_UP	lib/round.h	?^#define DIV_ROUND_UP(X, STEP) (((X) + (STEP) - 1) ?
+Elf32_Ehdr	userprog/process.c	?^struct Elf32_Ehdr$?
+Elf32_Half	userprog/process.c	?^typedef uint16_t Elf32_Half;$?
+Elf32_Off	userprog/process.c	?^typedef uint32_t Elf32_Word, Elf32_Addr, Elf32_Off?
+Elf32_Phdr	userprog/process.c	?^struct Elf32_Phdr$?
+FCR_REG	devices/serial.c	?^#define FCR_REG (IO_BASE + 2)   /* FIFO Control Re?
+FILESYS_DIRECTORY_H	filesys/directory.h	?^#define FILESYS_DIRECTORY_H$?
+FILESYS_FILESYS_H	filesys/filesys.h	?^#define FILESYS_FILESYS_H$?
+FILESYS_FILE_H	filesys/file.h	?^#define FILESYS_FILE_H$?
+FILESYS_FREE_MAP_H	filesys/free-map.h	?^#define FILESYS_FREE_MAP_H$?
+FILESYS_FSUTIL_H	filesys/fsutil.h	?^#define FILESYS_FSUTIL_H$?
+FILESYS_INODE_H	filesys/inode.h	?^#define FILESYS_INODE_H$?
+FILESYS_OFF_T_H	filesys/off_t.h	?^#define FILESYS_OFF_T_H$?
+FLAG_IF	threads/flags.h	?^#define FLAG_IF   0x00000200    /* Interrupt Flag.?
+FLAG_MBS	threads/flags.h	?^#define FLAG_MBS  0x00000002    /* Must be set. */?
+FREE_MAP_SECTOR	filesys/filesys.h	?^#define FREE_MAP_SECTOR 0       /* Free map file i?
+GRAY_ON_BLACK	devices/vga.c	?^#define GRAY_ON_BLACK 0x07$?
+GetOptions	utils/pintos-mkdisk	?^GetOptions ("h|help" => sub { usage (0); },$?
+IER_RECV	devices/serial.c	?^#define IER_RECV 0x01           /* Interrupt when ?
+IER_REG	devices/serial.c	?^#define IER_REG (IO_BASE + 1)   /* Interrupt Enabl?
+IER_XMIT	devices/serial.c	?^#define IER_XMIT 0x02           /* Interrupt when ?
+IIR_REG	devices/serial.c	?^#define IIR_REG (IO_BASE + 2)   /* Interrupt Ident?
+INODE_MAGIC	filesys/inode.c	?^#define INODE_MAGIC 0x494e4f44$?
+INT16_MAX	lib/stdint.h	?^#define INT16_MAX 32767$?
+INT16_MIN	lib/stdint.h	?^#define INT16_MIN (-INT16_MAX - 1)$?
+INT32_MAX	lib/stdint.h	?^#define INT32_MAX 2147483647$?
+INT32_MIN	lib/stdint.h	?^#define INT32_MIN (-INT32_MAX - 1)$?
+INT64_MAX	lib/stdint.h	?^#define INT64_MAX 9223372036854775807LL$?
+INT64_MIN	lib/stdint.h	?^#define INT64_MIN (-INT64_MAX - 1)$?
+INT8_MAX	lib/stdint.h	?^#define INT8_MAX 127$?
+INT8_MIN	lib/stdint.h	?^#define INT8_MIN (-INT8_MAX - 1)$?
+INTMAX_MAX	lib/stdint.h	?^#define INTMAX_MAX INT64_MAX$?
+INTMAX_MIN	lib/stdint.h	?^#define INTMAX_MIN INT64_MIN$?
+INTPTR_MAX	lib/stdint.h	?^#define INTPTR_MAX INT32_MAX$?
+INTPTR_MIN	lib/stdint.h	?^#define INTPTR_MIN INT32_MIN$?
+INTQ_BUFSIZE	devices/intq.h	?^#define INTQ_BUFSIZE 64$?
+INTR_CNT	threads/interrupt.c	?^#define INTR_CNT 256$?
+INT_MAX	lib/limits.h	?^#define INT_MAX 2147483647$?
+INT_MIN	lib/limits.h	?^#define INT_MIN (-INT_MAX - 1)$?
+IO_BASE	devices/serial.c	?^#define IO_BASE 0x3f8$?
+LCR_DLAB	devices/serial.c	?^#define LCR_DLAB 0x80           /* Divisor Latch A?
+LCR_N81	devices/serial.c	?^#define LCR_N81 0x03            /* No parity, 8 da?
+LCR_REG	devices/serial.c	?^#define LCR_REG (IO_BASE + 3)   /* Line Control Re?
+LLONG_MAX	lib/limits.h	?^#define LLONG_MAX 9223372036854775807LL$?
+LLONG_MIN	lib/limits.h	?^#define LLONG_MIN (-LLONG_MAX - 1)$?
+LOADER_ARGS	threads/loader.h	?^#define LOADER_ARGS (LOADER_PARTS - LOADER_ARGS_LE?
+LOADER_ARGS_LEN	threads/loader.h	?^#define LOADER_ARGS_LEN 128$?
+LOADER_ARG_CNT	threads/loader.h	?^#define LOADER_ARG_CNT (LOADER_ARGS - LOADER_ARG_C?
+LOADER_ARG_CNT_LEN	threads/loader.h	?^#define LOADER_ARG_CNT_LEN 4$?
+LOADER_BASE	threads/loader.h	?^#define LOADER_BASE 0x7c00      /* Physical addres?
+LOADER_END	threads/loader.h	?^#define LOADER_END  0x7e00      /* Physical addres?
+LOADER_KERN_BASE	threads/loader.h	?^#define LOADER_KERN_BASE 0x20000       /* 128 kB. ?
+LOADER_PARTS	threads/loader.h	?^#define LOADER_PARTS (LOADER_SIG - LOADER_PARTS_LE?
+LOADER_PARTS_LEN	threads/loader.h	?^#define LOADER_PARTS_LEN 64$?
+LOADER_PHYS_BASE	threads/loader.h	?^#define LOADER_PHYS_BASE 0xc0000000     /* 3 GB. *?
+LOADER_SIG	threads/loader.h	?^#define LOADER_SIG (LOADER_END - LOADER_SIG_LEN)  ?
+LOADER_SIG_LEN	threads/loader.h	?^#define LOADER_SIG_LEN 2$?
+LOG_THIS	misc/bochs-2.2.6-jitter.patch	?^ #define LOG_THIS this->$?
+LONG_MAX	lib/limits.h	?^#define LONG_MAX 2147483647L$?
+LONG_MIN	lib/limits.h	?^#define LONG_MIN (-LONG_MAX - 1)$?
+LSR_DR	devices/serial.c	?^#define LSR_DR 0x01             /* Data Ready: rec?
+LSR_REG	devices/serial.c	?^#define LSR_REG (IO_BASE + 5)   /* Line Status Reg?
+LSR_THRE	devices/serial.c	?^#define LSR_THRE 0x20           /* THR Empty. */$?
+LS_REG	devices/serial.c	?^#define LS_REG (IO_BASE + 0)    /* Divisor Latch (?
+MAX_LEVEL	examples/pwd.c	?^#define MAX_LEVEL 20$?
+MCR_OUT2	devices/serial.c	?^#define MCR_OUT2 0x08           /* Output line 2. ?
+MCR_REG	devices/serial.c	?^#define MCR_REG (IO_BASE + 4)   /* MODEM Control R?
+MS_REG	devices/serial.c	?^#define MS_REG (IO_BASE + 1)    /* Divisor Latch (?
+Mbubsort	examples/bubsort.c	?^main (void)$?
+Mcat	examples/cat.c	?^main (int argc, char *argv[]) $?
+Mcksum	tests/cksum.c	?^main (void) $?
+Mcmp	examples/cmp.c	?^main (int argc, char *argv[]) $?
+Mcp	examples/cp.c	?^main (int argc, char *argv[]) $?
+Mecho	examples/echo.c	?^main (int argc, char **argv)$?
+Mhalt	examples/halt.c	?^main (void)$?
+Mhex-dump	examples/hex-dump.c	?^main (int argc, char *argv[]) $?
+Minit	threads/init.c	?^int main (void) NO_RETURN;$?
+Minsult	examples/insult.c	?^main (int argc, char *argv[])$?
+Mlineup	examples/lineup.c	?^main (int argc, char *argv[])$?
+Mls	examples/ls.c	?^main (int argc, char *argv[]) $?
+Mmain	tests/main.c	?^main (int argc UNUSED, char *argv[]) $?
+Mmatmult	examples/matmult.c	?^main (void)$?
+Mmcat	examples/mcat.c	?^main (int argc, char *argv[]) $?
+Mmcp	examples/mcp.c	?^main (int argc, char *argv[]) $?
+Mmkdir	examples/mkdir.c	?^main (int argc, char *argv[]) $?
+Mpwd	examples/pwd.c	?^main (void) $?
+Mrecursor	examples/recursor.c	?^main (int argc, char *argv[])$?
+Mrm	examples/rm.c	?^main (int argc, char *argv[]) $?
+Msetitimer-helper	utils/setitimer-helper.c	?^main (int argc, char *argv[]) $?
+Mshell	examples/shell.c	?^main (void)$?
+Msquish-pty	utils/squish-pty.c	?^main (int argc __attribute__ ((unused)), char *arg?
+Msquish-unix	utils/squish-unix.c	?^main (int argc __attribute__ ((unused)), char *arg?
+NAME_MAX	filesys/directory.h	?^#define NAME_MAX 14$?
+NOT_REACHED	lib/debug.h	?^#define NOT_REACHED() PANIC ("executed an unreacha?
+NO_INLINE	lib/debug.h	?^#define NO_INLINE __attribute__ ((noinline))$?
+NO_RETURN	lib/debug.h	?^#define NO_RETURN __attribute__ ((noreturn))$?
+NULL	lib/stddef.h	?^#define NULL ((void *) 0)$?
+OUTPUT_FORMAT	threads/kernel.lds.S	?^OUTPUT_FORMAT("elf32-i386")$?
+PACKED	lib/packed.h	?^#define PACKED __attribute__ ((packed))$?
+PANIC	lib/debug.h	?^#define PANIC(...) debug_panic (__FILE__, __LINE__?
+PDBITS	threads/pte.h	?^#define PDBITS  10                         /* Numb?
+PDMASK	threads/pte.h	?^#define PDMASK  BITMASK(PDSHIFT, PDBITS)   /* Page?
+PDSHIFT	threads/pte.h	?^#define PDSHIFT (PTSHIFT + PTBITS)         /* Firs?
+PE32Ax	userprog/process.c	?^#define PE32Ax PRIx32   /* Print Elf32_Addr in hex?
+PE32Hx	userprog/process.c	?^#define PE32Hx PRIx16   /* Print Elf32_Half in hex?
+PE32Ox	userprog/process.c	?^#define PE32Ox PRIx32   /* Print Elf32_Off in hexa?
+PE32Wx	userprog/process.c	?^#define PE32Wx PRIx32   /* Print Elf32_Word in hex?
+PF_P	userprog/exception.h	?^#define PF_P 0x1    /* 0: not-present page. 1: acc?
+PF_R	userprog/process.c	?^#define PF_R 4          /* Readable. */$?
+PF_U	userprog/exception.h	?^#define PF_U 0x4    /* 0: kernel, 1: user process.?
+PF_W	userprog/exception.h	?^#define PF_W 0x2    /* 0: read, 1: write. */$?
+PF_X	userprog/process.c	?^#define PF_X 1          /* Executable. */$?
+PGBITS	threads/vaddr.h	?^#define PGBITS  12                         /* Numb?
+PGMASK	threads/vaddr.h	?^#define PGMASK  BITMASK(PGSHIFT, PGBITS)   /* Page?
+PGSHIFT	threads/vaddr.h	?^#define PGSHIFT 0                          /* Inde?
+PGSIZE	threads/vaddr.h	?^#define PGSIZE  (1 << PGBITS)              /* Byte?
+PHYS_BASE	threads/vaddr.h	?^#define	PHYS_BASE ((void *) LOADER_PHYS_BASE)$?
+PIC0_CTRL	threads/interrupt.c	?^#define PIC0_CTRL	0x20    /* Master PIC control re?
+PIC0_DATA	threads/interrupt.c	?^#define PIC0_DATA	0x21    /* Master PIC data regis?
+PIC1_CTRL	threads/interrupt.c	?^#define PIC1_CTRL	0xa0    /* Slave PIC control reg?
+PIC1_DATA	threads/interrupt.c	?^#define PIC1_DATA	0xa1    /* Slave PIC data regist?
+PIT_HZ	devices/pit.c	?^#define PIT_HZ 1193180$?
+PIT_PORT_CONTROL	devices/pit.c	?^#define PIT_PORT_CONTROL          0x43            ?
+PIT_PORT_COUNTER	devices/pit.c	?^#define PIT_PORT_COUNTER(CHANNEL) (0x40 + (CHANNEL?
+PRDSNu	devices/block.h	?^#define PRDSNu PRIu32$?
+PRINTF_FORMAT	lib/debug.h	?^#define PRINTF_FORMAT(FMT, FIRST) __attribute__ ((?
+PRIX16	lib/inttypes.h	?^#define PRIX16 "hX"$?
+PRIX32	lib/inttypes.h	?^#define PRIX32 "X"$?
+PRIX64	lib/inttypes.h	?^#define PRIX64 "llX"$?
+PRIX8	lib/inttypes.h	?^#define PRIX8 "hhX"$?
+PRIXMAX	lib/inttypes.h	?^#define PRIXMAX "jX"$?
+PRIXPTR	lib/inttypes.h	?^#define PRIXPTR "tX"$?
+PRI_DEFAULT	threads/thread.h	?^#define PRI_DEFAULT 31                  /* Default?
+PRI_MAX	threads/thread.h	?^#define PRI_MAX 63                      /* Highest?
+PRI_MIN	threads/thread.h	?^#define PRI_MIN 0                       /* Lowest ?
+PRId16	lib/inttypes.h	?^#define PRId16 "hd"$?
+PRId32	lib/inttypes.h	?^#define PRId32 "d"$?
+PRId64	lib/inttypes.h	?^#define PRId64 "lld"$?
+PRId8	lib/inttypes.h	?^#define PRId8 "hhd"$?
+PRIdMAX	lib/inttypes.h	?^#define PRIdMAX "jd"$?
+PRIdPTR	lib/inttypes.h	?^#define PRIdPTR "td"$?
+PRIi16	lib/inttypes.h	?^#define PRIi16 "hi"$?
+PRIi32	lib/inttypes.h	?^#define PRIi32 "i"$?
+PRIi64	lib/inttypes.h	?^#define PRIi64 "lli"$?
+PRIi8	lib/inttypes.h	?^#define PRIi8 "hhi"$?
+PRIiMAX	lib/inttypes.h	?^#define PRIiMAX "ji"$?
+PRIiPTR	lib/inttypes.h	?^#define PRIiPTR "ti"$?
+PRIo16	lib/inttypes.h	?^#define PRIo16 "ho"$?
+PRIo32	lib/inttypes.h	?^#define PRIo32 "o"$?
+PRIo64	lib/inttypes.h	?^#define PRIo64 "llo"$?
+PRIo8	lib/inttypes.h	?^#define PRIo8 "hho"$?
+PRIoMAX	lib/inttypes.h	?^#define PRIoMAX "jo"$?
+PRIoPTR	lib/inttypes.h	?^#define PRIoPTR "to"$?
+PRIu16	lib/inttypes.h	?^#define PRIu16 "hu"$?
+PRIu32	lib/inttypes.h	?^#define PRIu32 "u"$?
+PRIu64	lib/inttypes.h	?^#define PRIu64 "llu"$?
+PRIu8	lib/inttypes.h	?^#define PRIu8 "hhu"$?
+PRIuMAX	lib/inttypes.h	?^#define PRIuMAX "ju"$?
+PRIuPTR	lib/inttypes.h	?^#define PRIuPTR "tu"$?
+PRIx16	lib/inttypes.h	?^#define PRIx16 "hx"$?
+PRIx32	lib/inttypes.h	?^#define PRIx32 "x"$?
+PRIx64	lib/inttypes.h	?^#define PRIx64 "llx"$?
+PRIx8	lib/inttypes.h	?^#define PRIx8 "hhx"$?
+PRIxMAX	lib/inttypes.h	?^#define PRIxMAX "jx"$?
+PRIxPTR	lib/inttypes.h	?^#define PRIxPTR "tx"$?
+PROTd	filesys/off_t.h	?^#define PROTd PRId32$?
+PTBITS	threads/pte.h	?^#define PTBITS  10                         /* Numb?
+PTE_A	threads/pte.h	?^#define PTE_A 0x20              /* 1=accessed, 0=n?
+PTE_ADDR	threads/pte.h	?^#define PTE_ADDR  0xfffff000    /* Address bits. *?
+PTE_AVL	threads/pte.h	?^#define PTE_AVL   0x00000e00    /* Bits available ?
+PTE_D	threads/pte.h	?^#define PTE_D 0x40              /* 1=dirty, 0=not ?
+PTE_FLAGS	threads/pte.h	?^#define PTE_FLAGS 0x00000fff    /* Flag bits. */$?
+PTE_P	threads/pte.h	?^#define PTE_P 0x1               /* 1=present, 0=no?
+PTE_U	threads/pte.h	?^#define PTE_U 0x4               /* 1=user/kernel, ?
+PTE_W	threads/pte.h	?^#define PTE_W 0x2               /* 1=read/write, 0?
+PTMASK	threads/pte.h	?^#define PTMASK  BITMASK(PTSHIFT, PTBITS)   /* Page?
+PTRDIFF_MAX	lib/stdint.h	?^#define PTRDIFF_MAX INT32_MAX$?
+PTRDIFF_MIN	lib/stdint.h	?^#define PTRDIFF_MIN INT32_MIN$?
+PTSHIFT	threads/pte.h	?^#define	PTSHIFT PGBITS		           /* First page t?
+PTSPAN	threads/pte.h	?^#define PTSPAN  (1 << PTBITS << PGBITS)    /* Byte?
+PT_DYNAMIC	userprog/process.c	?^#define PT_DYNAMIC 2            /* Dynamic linking?
+PT_INTERP	userprog/process.c	?^#define PT_INTERP  3            /* Name of dynamic?
+PT_LOAD	userprog/process.c	?^#define PT_LOAD    1            /* Loadable segmen?
+PT_NOTE	userprog/process.c	?^#define PT_NOTE    4            /* Auxiliary info.?
+PT_NULL	userprog/process.c	?^#define PT_NULL    0            /* Ignore. */$?
+PT_PHDR	userprog/process.c	?^#define PT_PHDR    6            /* Program header ?
+PT_SHLIB	userprog/process.c	?^#define PT_SHLIB   5            /* Reserved. */$?
+PT_STACK	userprog/process.c	?^#define PT_STACK   0x6474e551   /* Stack segment. ?
+PUTREG	misc/bochs-2.2.6-big-endian.patch	?^ #define PUTREG(buf, val, len) do { \\$?
+RBR_REG	devices/serial.c	?^#define RBR_REG (IO_BASE + 0)   /* Receiver Buffer?
+REAL	threads/intr-stubs.S	?^#define REAL                                    \\?
+ROOT_DIR_SECTOR	filesys/filesys.h	?^#define ROOT_DIR_SECTOR 1       /* Root directory ?
+ROUND_DOWN	lib/round.h	?^#define ROUND_DOWN(X, STEP) ((X) / (STEP) * (STEP)?
+ROUND_UP	lib/round.h	?^#define ROUND_UP(X, STEP) (((X) + (STEP) - 1) / (S?
+ROW_CNT	devices/vga.c	?^#define ROW_CNT 25$?
+RTCSA_UIP	devices/rtc.c	?^#define RTCSA_UIP	0x80	/* Set while time update in?
+RTCSB_24HR	devices/rtc.c	?^#define RTCSB_24HR	0x02    /* 0 = 12-hour format, ?
+RTCSB_DM	devices/rtc.c	?^#define RTCSB_DM	0x04	/* 0 = BCD time format, 1 = ?
+RTCSB_SET	devices/rtc.c	?^#define	RTCSB_SET	0x80	/* Disables update to let t?
+RTC_H	devices/rtc.h	?^#define RTC_H$?
+RTC_REG_A	devices/rtc.c	?^#define RTC_REG_A	0x0a    /* Register A: update-in?
+RTC_REG_B	devices/rtc.c	?^#define RTC_REG_B	0x0b    /* Register B: 24/12 hou?
+RTC_REG_C	devices/rtc.c	?^#define RTC_REG_C	0x0c    /* Register C: pending i?
+RTC_REG_D	devices/rtc.c	?^#define RTC_REG_D	0x0d    /* Register D: valid tim?
+RTC_REG_HOUR	devices/rtc.c	?^#define RTC_REG_HOUR	4       /* Hour: 0x00...0x23.?
+RTC_REG_MDAY	devices/rtc.c	?^#define RTC_REG_MDAY	7	/* Day of the month: 0x01..?
+RTC_REG_MIN	devices/rtc.c	?^#define RTC_REG_MIN	2       /* Minute: 0x00...0x59?
+RTC_REG_MON	devices/rtc.c	?^#define RTC_REG_MON	8       /* Month: 0x01...0x12.?
+RTC_REG_SEC	devices/rtc.c	?^#define RTC_REG_SEC	0       /* Second: 0x00...0x59?
+RTC_REG_YEAR	devices/rtc.c	?^#define RTC_REG_YEAR	9	/* Year: 0x00...0x99. */$?
+SCHAR_MAX	lib/limits.h	?^#define SCHAR_MAX 127$?
+SCHAR_MIN	lib/limits.h	?^#define SCHAR_MIN (-SCHAR_MAX - 1)$?
+SEL_CNT	userprog/gdt.h	?^#define SEL_CNT         6       /* Number of segme?
+SEL_KCSEG	threads/loader.h	?^#define SEL_KCSEG       0x08    /* Kernel code sel?
+SEL_KDSEG	threads/loader.h	?^#define SEL_KDSEG       0x10    /* Kernel data sel?
+SEL_NULL	threads/loader.h	?^#define SEL_NULL        0x00    /* Null selector. ?
+SEL_TSS	userprog/gdt.h	?^#define SEL_TSS         0x28    /* Task-state segm?
+SEL_UCSEG	userprog/gdt.h	?^#define SEL_UCSEG       0x1B    /* User code selec?
+SEL_UDSEG	userprog/gdt.h	?^#define SEL_UDSEG       0x23    /* User data selec?
+SERIAL_ENABLE	misc/bochs-2.2.6-solaris-tty.patch	?^ #define SERIAL_ENABLE$?
+SHRT_MAX	lib/limits.h	?^#define SHRT_MAX 32767$?
+SHRT_MIN	lib/limits.h	?^#define SHRT_MIN (-SHRT_MAX - 1)$?
+SIZE_MAX	lib/stdint.h	?^#define SIZE_MAX UINT32_MAX$?
+SORT_SIZE	examples/bubsort.c	?^#define SORT_SIZE 128$?
+SPEAKER_GATE_ENABLE	devices/speaker.c	?^#define SPEAKER_GATE_ENABLE	0x03$?
+SPEAKER_PORT_GATE	devices/speaker.c	?^#define SPEAKER_PORT_GATE	0x61$?
+STA_BSY	devices/ide.c	?^#define STA_BSY 0x80            /* Busy. */$?
+STA_DRDY	devices/ide.c	?^#define STA_DRDY 0x40           /* Device Ready. *?
+STA_DRQ	devices/ide.c	?^#define STA_DRQ 0x08            /* Data Request. *?
+STDIN_FILENO	lib/stdio.h	?^#define STDIN_FILENO 0$?
+STDOUT_FILENO	lib/stdio.h	?^#define STDOUT_FILENO 1$?
+STUB	threads/intr-stubs.S	?^#define STUB(NUMBER, TYPE)                      \\?
+SWITCH_CUR	threads/switch.h	?^#define SWITCH_CUR      20$?
+SWITCH_NEXT	threads/switch.h	?^#define SWITCH_NEXT     24$?
+TESTS_ARC4_H	tests/arc4.h	?^#define TESTS_ARC4_H$?
+TESTS_CKSUM_H	tests/cksum.h	?^#define TESTS_CKSUM_H$?
+TESTS_LIB_H	tests/lib.h	?^#define TESTS_LIB_H$?
+TESTS_MAIN_H	tests/main.h	?^#define TESTS_MAIN_H$?
+THREADS_FLAGS_H	threads/flags.h	?^#define THREADS_FLAGS_H$?
+THREADS_INIT_H	threads/init.h	?^#define THREADS_INIT_H$?
+THREADS_INTERRUPT_H	threads/interrupt.h	?^#define THREADS_INTERRUPT_H$?
+THREADS_INTR_STUBS_H	threads/intr-stubs.h	?^#define THREADS_INTR_STUBS_H$?
+THREADS_IO_H	threads/io.h	?^#define THREADS_IO_H$?
+THREADS_LOADER_H	threads/loader.h	?^#define THREADS_LOADER_H$?
+THREADS_MALLOC_H	threads/malloc.h	?^#define THREADS_MALLOC_H$?
+THREADS_PALLOC_H	threads/palloc.h	?^#define THREADS_PALLOC_H$?
+THREADS_PTE_H	threads/pte.h	?^#define THREADS_PTE_H$?
+THREADS_SWITCH_H	threads/switch.h	?^#define THREADS_SWITCH_H$?
+THREADS_SYNCH_H	threads/synch.h	?^#define THREADS_SYNCH_H$?
+THREADS_THREAD_H	threads/thread.h	?^#define THREADS_THREAD_H$?
+THREADS_VADDR_H	threads/vaddr.h	?^#define THREADS_VADDR_H$?
+THREAD_MAGIC	threads/thread.c	?^#define THREAD_MAGIC 0xcd6abf4b$?
+THR_REG	devices/serial.c	?^#define THR_REG (IO_BASE + 0)   /* Transmitter Hol?
+TID_ERROR	threads/thread.h	?^#define TID_ERROR ((tid_t) -1)          /* Error v?
+TIMER_FREQ	devices/timer.h	?^#define TIMER_FREQ 100$?
+TIME_SLICE	threads/thread.c	?^#define TIME_SLICE 4            /* # of timer tick?
+UCHAR_MAX	lib/limits.h	?^#define UCHAR_MAX 255$?
+UINT16_MAX	lib/stdint.h	?^#define UINT16_MAX 65535$?
+UINT32_MAX	lib/stdint.h	?^#define UINT32_MAX 4294967295U$?
+UINT64_MAX	lib/stdint.h	?^#define UINT64_MAX 18446744073709551615ULL$?
+UINT8_MAX	lib/stdint.h	?^#define UINT8_MAX 255$?
+UINTMAX_MAX	lib/stdint.h	?^#define UINTMAX_MAX UINT64_MAX$?
+UINTPTR_MAX	lib/stdint.h	?^#define UINTPTR_MAX UINT32_MAX$?
+UINT_MAX	lib/limits.h	?^#define UINT_MAX 4294967295U$?
+ULLONG_MAX	lib/limits.h	?^#define ULLONG_MAX 18446744073709551615ULL$?
+ULONG_MAX	lib/limits.h	?^#define ULONG_MAX 4294967295UL$?
+UNUSED	lib/debug.h	?^#define UNUSED __attribute__ ((unused))$?
+USERPROG_EXCEPTION_H	userprog/exception.h	?^#define USERPROG_EXCEPTION_H$?
+USERPROG_GDT_H	userprog/gdt.h	?^#define USERPROG_GDT_H$?
+USERPROG_PAGEDIR_H	userprog/pagedir.h	?^#define USERPROG_PAGEDIR_H$?
+USERPROG_PROCESS_H	userprog/process.h	?^#define USERPROG_PROCESS_H$?
+USERPROG_SYSCALL_H	userprog/syscall.h	?^#define USERPROG_SYSCALL_H$?
+USERPROG_TSS_H	userprog/tss.h	?^#define USERPROG_TSS_H$?
+USHRT_MAX	lib/limits.h	?^#define USHRT_MAX 65535$?
+USTAR_HEADER_SIZE	lib/ustar.h	?^#define USTAR_HEADER_SIZE 512$?
+_GNU_SOURCE	utils/squish-pty.c	?^#define _GNU_SOURCE 1$?
+__LIB_CTYPE_H	lib/ctype.h	?^#define __LIB_CTYPE_H$?
+__LIB_DEBUG_H	lib/debug.h	?^#define __LIB_DEBUG_H$?
+__LIB_INTTYPES_H	lib/inttypes.h	?^#define __LIB_INTTYPES_H$?
+__LIB_LIMITS_H	lib/limits.h	?^#define __LIB_LIMITS_H$?
+__LIB_PACKED_H	lib/packed.h	?^#define __LIB_PACKED_H$?
+__LIB_RANDOM_H	lib/random.h	?^#define __LIB_RANDOM_H$?
+__LIB_ROUND_H	lib/round.h	?^#define __LIB_ROUND_H$?
+__LIB_STDARG_H	lib/stdarg.h	?^#define __LIB_STDARG_H$?
+__LIB_STDBOOL_H	lib/stdbool.h	?^#define __LIB_STDBOOL_H$?
+__LIB_STDDEF_H	lib/stddef.h	?^#define __LIB_STDDEF_H$?
+__LIB_STDINT_H	lib/stdint.h	?^#define __LIB_STDINT_H$?
+__LIB_STDIO_H	lib/stdio.h	?^#define __LIB_STDIO_H$?
+__LIB_STDLIB_H	lib/stdlib.h	?^#define __LIB_STDLIB_H$?
+__LIB_STRING_H	lib/string.h	?^#define __LIB_STRING_H$?
+__LIB_SYSCALL_NR_H	lib/syscall-nr.h	?^#define __LIB_SYSCALL_NR_H$?
+__LIB_USTAR_H	lib/ustar.h	?^#define __LIB_USTAR_H$?
+__bool_true_false_are_defined	lib/stdbool.h	?^#define __bool_true_false_are_defined	1$?
+__divdi3	lib/arithmetic.c	?^__divdi3 (long long n, long long d) $?
+__moddi3	lib/arithmetic.c	?^__moddi3 (long long n, long long d) $?
+__printf	lib/stdio.c	?^__printf (const char *format,$?
+__udivdi3	lib/arithmetic.c	?^__udivdi3 (unsigned long long n, unsigned long lon?
+__umoddi3	lib/arithmetic.c	?^__umoddi3 (unsigned long long n, unsigned long lon?
+__vprintf	lib/stdio.c	?^__vprintf (const char *format, va_list args,$?
+action	threads/init.c	?^  struct action$?
+active_pd	userprog/pagedir.c	?^active_pd (void) $?
+alloc_frame	threads/thread.c	?^alloc_frame (struct thread *t, size_t size) $?
+allocate_tid	threads/thread.c	?^allocate_tid (void) $?
+arc4	tests/arc4.h	?^struct arc4$?
+arc4_crypt	tests/arc4.c	?^arc4_crypt (struct arc4 *arc4, void *buf_, size_t ?
+arc4_init	tests/arc4.c	?^arc4_init (struct arc4 *arc4, const void *key_, si?
+arena	threads/malloc.c	?^struct arena $?
+arena_to_block	threads/malloc.c	?^arena_to_block (struct arena *a, size_t idx) $?
+ata_disk	devices/ide.c	?^struct ata_disk$?
+atoi	lib/stdlib.c	?^atoi (const char *s) $?
+backspace	examples/shell.c	?^backspace (char **pos, char line[]) $?
+barrier	threads/synch.h	?^#define barrier() asm volatile ("" : : : "memory")?
+bcd_to_bin	devices/rtc.c	?^bcd_to_bin (uint8_t x)$?
+binary_search	lib/stdlib.c	?^binary_search (const void *key, const void *array,?
+block	devices/block.c	?^struct block$?
+block_first	devices/block.c	?^block_first (void)$?
+block_get_by_name	devices/block.c	?^block_get_by_name (const char *name)$?
+block_get_role	devices/block.c	?^block_get_role (enum block_type role)$?
+block_name	devices/block.c	?^block_name (struct block *block)$?
+block_next	devices/block.c	?^block_next (struct block *block)$?
+block_operations	devices/block.h	?^struct block_operations$?
+block_print_stats	devices/block.c	?^block_print_stats (void)$?
+block_read	devices/block.c	?^block_read (struct block *block, block_sector_t se?
+block_register	devices/block.c	?^block_register (const char *name, enum block_type ?
+block_sector_t	devices/block.h	?^typedef uint32_t block_sector_t;$?
+block_set_role	devices/block.c	?^block_set_role (enum block_type role, struct block?
+block_size	devices/block.c	?^block_size (struct block *block)$?
+block_to_arena	threads/malloc.c	?^block_to_arena (struct block *b)$?
+block_type	devices/block.h	?^enum block_type$?
+block_type_name	devices/block.c	?^block_type_name (enum block_type type)$?
+block_write	devices/block.c	?^block_write (struct block *block, block_sector_t s?
+bool	lib/stdbool.h	?^#define bool	_Bool$?
+bsearch	lib/stdlib.c	?^bsearch (const void *key, const void *array, size_?
+bss_init	threads/init.c	?^bss_init (void)$?
+busy_wait	devices/timer.c	?^busy_wait (int64_t loops)$?
+byte_to_sector	filesys/inode.c	?^byte_to_sector (const struct inode *inode, off_t p?
+bytes_to_sectors	filesys/inode.c	?^bytes_to_sectors (off_t size)$?
+calculate_chksum	lib/ustar.c	?^calculate_chksum (const struct ustar_header *h)$?
+calloc	threads/malloc.c	?^calloc (size_t a, size_t b) $?
+channel	devices/ide.c	?^struct channel$?
+check_device_type	devices/ide.c	?^check_device_type (struct ata_disk *d) $?
+check_file	tests/lib.c	?^check_file (const char *file_name, const void *buf?
+check_file_handle	tests/lib.c	?^check_file_handle (int fd,$?
+check_sector	devices/block.c	?^check_sector (struct block *block, block_sector_t ?
+cksum	tests/cksum.c	?^cksum (const void *b_, size_t n)$?
+clear_row	devices/vga.c	?^clear_row (size_t y) $?
+cls	devices/vga.c	?^cls (void)$?
+cmos_read	devices/rtc.c	?^cmos_read (uint8_t index)$?
+compare_bytes	tests/lib.c	?^compare_bytes (const void *read_data_, const void ?
+compare_thunk	lib/stdlib.c	?^compare_thunk (const void *a, const void *b, void ?
+cond_broadcast	threads/synch.c	?^cond_broadcast (struct condition *cond, struct loc?
+cond_init	threads/synch.c	?^cond_init (struct condition *cond)$?
+cond_signal	threads/synch.c	?^cond_signal (struct condition *cond, struct lock *?
+cond_wait	threads/synch.c	?^cond_wait (struct condition *cond, struct lock *lo?
+condition	threads/synch.h	?^struct condition$?
+debug_backtrace	lib/debug.c	?^debug_backtrace (void) $?
+debug_panic	lib/debug.h	?^void debug_panic (const char *file, int line, cons?
+desc	threads/malloc.c	?^struct desc$?
+descramble_ata_string	devices/ide.c	?^descramble_ata_string (char *string, int size) $?
+dir	filesys/directory.c	?^struct dir $?
+dir_add	filesys/directory.c	?^dir_add (struct dir *dir, const char *name, block_?
+dir_close	filesys/directory.c	?^dir_close (struct dir *dir) $?
+dir_create	filesys/directory.c	?^dir_create (block_sector_t sector, size_t entry_cn?
+dir_entry	filesys/directory.c	?^struct dir_entry $?
+dir_get_inode	filesys/directory.c	?^dir_get_inode (struct dir *dir) $?
+dir_lookup	filesys/directory.c	?^dir_lookup (const struct dir *dir, const char *nam?
+dir_open	filesys/directory.c	?^dir_open (struct inode *inode) $?
+dir_open_root	filesys/directory.c	?^dir_open_root (void)$?
+dir_readdir	filesys/directory.c	?^dir_readdir (struct dir *dir, char name[NAME_MAX +?
+dir_remove	filesys/directory.c	?^dir_remove (struct dir *dir, const char *name) $?
+dir_reopen	filesys/directory.c	?^dir_reopen (struct dir *dir) $?
+divl	lib/arithmetic.c	?^divl (uint64_t n, uint32_t d)$?
+do_compare	lib/stdlib.c	?^do_compare (unsigned char *array, size_t a_idx, si?
+do_format	filesys/filesys.c	?^do_format (void)$?
+do_swap	lib/stdlib.c	?^do_swap (unsigned char *array, size_t a_idx, size_?
+es	threads/loader.S	?^	cmpl $0, %es:(%si)$?
+exception_init	userprog/exception.c	?^exception_init (void) $?
+exception_print_stats	userprog/exception.c	?^exception_print_stats (void) $?
+exec_children	tests/lib.c	?^exec_children (const char *child_name, pid_t pids[?
+expand	examples/insult.c	?^expand (int num, char **grammar[], char *location[?
+fail	tests/lib.c	?^fail (const char *format, ...) $?
+fail_io	utils/squish-pty.c	?^fail_io (const char *msg, ...)$?
+false	lib/stdbool.h	?^#define false	0$?
+file	filesys/file.c	?^struct file $?
+file_allow_write	filesys/file.c	?^file_allow_write (struct file *file) $?
+file_close	filesys/file.c	?^file_close (struct file *file) $?
+file_deny_write	filesys/file.c	?^file_deny_write (struct file *file) $?
+file_get_inode	filesys/file.c	?^file_get_inode (struct file *file) $?
+file_length	filesys/file.c	?^file_length (struct file *file) $?
+file_open	filesys/file.c	?^file_open (struct inode *inode) $?
+file_read	filesys/file.c	?^file_read (struct file *file, void *buffer, off_t ?
+file_read_at	filesys/file.c	?^file_read_at (struct file *file, void *buffer, off?
+file_reopen	filesys/file.c	?^file_reopen (struct file *file) $?
+file_seek	filesys/file.c	?^file_seek (struct file *file, off_t new_pos)$?
+file_tell	filesys/file.c	?^file_tell (struct file *file) $?
+file_write	filesys/file.c	?^file_write (struct file *file, const void *buffer,?
+file_write_at	filesys/file.c	?^file_write_at (struct file *file, const void *buff?
+filesys_create	filesys/filesys.c	?^filesys_create (const char *name, off_t initial_si?
+filesys_done	filesys/filesys.c	?^filesys_done (void) $?
+filesys_init	filesys/filesys.c	?^filesys_init (bool format) $?
+filesys_open	filesys/filesys.c	?^filesys_open (const char *name)$?
+filesys_remove	filesys/filesys.c	?^filesys_remove (const char *name) $?
+find_cursor	devices/vga.c	?^find_cursor (size_t *x, size_t *y) $?
+format_integer	lib/stdio.c	?^format_integer (uintmax_t value, bool is_signed, b?
+format_string	lib/stdio.c	?^format_string (const char *string, int length,$?
+found_partition	devices/partition.c	?^found_partition (struct block *block, uint8_t part?
+free	threads/malloc.c	?^free (void *p) $?
+free_map_allocate	filesys/free-map.c	?^free_map_allocate (size_t cnt, block_sector_t *sec?
+free_map_close	filesys/free-map.c	?^free_map_close (void) $?
+free_map_create	filesys/free-map.c	?^free_map_create (void) $?
+free_map_init	filesys/free-map.c	?^free_map_init (void) $?
+free_map_open	filesys/free-map.c	?^free_map_open (void) $?
+free_map_release	filesys/free-map.c	?^free_map_release (block_sector_t sector, size_t cn?
+fsutil_append	filesys/fsutil.c	?^fsutil_append (char **argv)$?
+fsutil_cat	filesys/fsutil.c	?^fsutil_cat (char **argv)$?
+fsutil_extract	filesys/fsutil.c	?^fsutil_extract (char **argv UNUSED) $?
+fsutil_ls	filesys/fsutil.c	?^fsutil_ls (char **argv UNUSED) $?
+fsutil_rm	filesys/fsutil.c	?^fsutil_rm (char **argv) $?
+gdt_init	userprog/gdt.c	?^gdt_init (void)$?
+get_inumber	examples/pwd.c	?^get_inumber (const char *file_name, int *inum) $?
+getcwd	examples/pwd.c	?^getcwd (char *cwd, size_t cwd_size) $?
+handle_error	utils/squish-pty.c	?^handle_error (ssize_t retval, int *fd, bool fd_is_?
+heapify	lib/stdlib.c	?^heapify (unsigned char *array, size_t i, size_t cn?
+hex_dump	lib/stdio.c	?^hex_dump (uintptr_t ofs, const void *buf_, size_t ?
+ide_init	devices/ide.c	?^ide_init (void) $?
+ide_read	devices/ide.c	?^ide_read (void *d_, block_sector_t sec_no, void *b?
+ide_write	devices/ide.c	?^ide_write (void *d_, block_sector_t sec_no, const ?
+identify_ata_device	devices/ide.c	?^identify_ata_device (struct ata_disk *d) $?
+idle	threads/thread.c	?^idle (void *idle_started_ UNUSED) $?
+if	misc/bochs-2.2.6-big-endian.patch	?^             if (last_stop_reason == GDBSTUB_EXECU?
+ifeq	tests/Make.tests	?^ifeq ($(filter userprog, $(KERNEL_SUBDIRS)), userp?
+inb	threads/io.h	?^inb (uint16_t port)$?
+init	devices/vga.c	?^init (void)$?
+init_grammar	examples/insult.c	?^init_grammar (void)$?
+init_poll	devices/serial.c	?^init_poll (void) $?
+init_pool	threads/palloc.c	?^init_pool (struct pool *p, void *base, size_t page?
+init_thread	threads/thread.c	?^init_thread (struct thread *t, const char *name, i?
+inl	threads/io.h	?^inl (uint16_t port)$?
+inode	filesys/inode.c	?^struct inode $?
+inode_allow_write	filesys/inode.c	?^inode_allow_write (struct inode *inode) $?
+inode_close	filesys/inode.c	?^inode_close (struct inode *inode) $?
+inode_create	filesys/inode.c	?^inode_create (block_sector_t sector, off_t length)?
+inode_deny_write	filesys/inode.c	?^inode_deny_write (struct inode *inode) $?
+inode_disk	filesys/inode.c	?^struct inode_disk$?
+inode_get_inumber	filesys/inode.c	?^inode_get_inumber (const struct inode *inode)$?
+inode_init	filesys/inode.c	?^inode_init (void) $?
+inode_length	filesys/inode.c	?^inode_length (const struct inode *inode)$?
+inode_open	filesys/inode.c	?^inode_open (block_sector_t sector)$?
+inode_read_at	filesys/inode.c	?^inode_read_at (struct inode *inode, void *buffer_,?
+inode_remove	filesys/inode.c	?^inode_remove (struct inode *inode) $?
+inode_reopen	filesys/inode.c	?^inode_reopen (struct inode *inode)$?
+inode_write_at	filesys/inode.c	?^inode_write_at (struct inode *inode, const void *b?
+input_full	devices/input.c	?^input_full (void) $?
+input_getc	devices/input.c	?^input_getc (void) $?
+input_init	devices/input.c	?^input_init (void) $?
+input_putc	devices/input.c	?^input_putc (uint8_t key) $?
+input_sector	devices/ide.c	?^input_sector (struct channel *c, void *sector) $?
+insb	threads/io.h	?^insb (uint16_t port, void *addr, size_t cnt)$?
+insl	threads/io.h	?^insl (uint16_t port, void *addr, size_t cnt)$?
+install_page	userprog/process.c	?^install_page (void *upage, void *kpage, bool writa?
+insw	threads/io.h	?^insw (uint16_t port, void *addr, size_t cnt)$?
+int16_t	lib/stdint.h	?^typedef signed short int int16_t;$?
+int32_t	lib/stdint.h	?^typedef signed int int32_t;$?
+int64_t	lib/stdint.h	?^typedef signed long long int int64_t;$?
+int8_t	lib/stdint.h	?^typedef signed char int8_t;$?
+integer_base	lib/stdio.c	?^struct integer_base $?
+interrupt_handler	devices/ide.c	?^interrupt_handler (struct intr_frame *f) $?
+intmax_t	lib/stdint.h	?^typedef int64_t intmax_t;$?
+intptr_t	lib/stdint.h	?^typedef int32_t intptr_t;$?
+intq	devices/intq.h	?^struct intq$?
+intq_empty	devices/intq.c	?^intq_empty (const struct intq *q) $?
+intq_full	devices/intq.c	?^intq_full (const struct intq *q) $?
+intq_getc	devices/intq.c	?^intq_getc (struct intq *q) $?
+intq_init	devices/intq.c	?^intq_init (struct intq *q) $?
+intq_putc	devices/intq.c	?^intq_putc (struct intq *q, uint8_t byte) $?
+intr_context	threads/interrupt.c	?^intr_context (void) $?
+intr_dump_frame	threads/interrupt.c	?^intr_dump_frame (const struct intr_frame *f) $?
+intr_frame	threads/interrupt.h	?^struct intr_frame$?
+intr_handler	threads/interrupt.c	?^intr_handler (struct intr_frame *frame) $?
+intr_handler_func	threads/interrupt.h	?^typedef void intr_handler_func (struct intr_frame ?
+intr_init	threads/interrupt.c	?^intr_init (void)$?
+intr_level	threads/interrupt.h	?^enum intr_level $?
+intr_name	threads/interrupt.c	?^intr_name (uint8_t vec) $?
+intr_register_ext	threads/interrupt.c	?^intr_register_ext (uint8_t vec_no, intr_handler_fu?
+intr_register_int	threads/interrupt.c	?^intr_register_int (uint8_t vec_no, int dpl, enum i?
+intr_stub_func	threads/intr-stubs.h	?^typedef void intr_stub_func (void);$?
+intr_yield_on_return	threads/interrupt.c	?^intr_yield_on_return (void) $?
+invalidate_pagedir	userprog/pagedir.c	?^invalidate_pagedir (uint32_t *pd) $?
+inw	threads/io.h	?^inw (uint16_t port)$?
+is_all_zeros	lib/ustar.c	?^is_all_zeros (const char *block, size_t cnt)$?
+is_kernel_vaddr	threads/vaddr.h	?^is_kernel_vaddr (const void *vaddr) $?
+is_thread	threads/thread.c	?^static bool is_thread (struct thread *) UNUSED;$?
+is_user_vaddr	threads/vaddr.h	?^is_user_vaddr (const void *vaddr) $?
+isalnum	lib/ctype.h	?^static inline int isalnum (int c) { return isalpha?
+isalpha	lib/ctype.h	?^static inline int isalpha (int c) { return islower?
+isascii	lib/ctype.h	?^static inline int isascii (int c) { return c >= 0 ?
+isblank	lib/ctype.h	?^static inline int isblank (int c) { return c == ' ?
+iscntrl	lib/ctype.h	?^static inline int iscntrl (int c) { return (c >= 0?
+isdigit	lib/ctype.h	?^static inline int isdigit (int c) { return c >= '0?
+isgraph	lib/ctype.h	?^static inline int isgraph (int c) { return c > 32 ?
+islower	lib/ctype.h	?^static inline int islower (int c) { return c >= 'a?
+isprint	lib/ctype.h	?^static inline int isprint (int c) { return c >= 32?
+ispunct	lib/ctype.h	?^static inline int ispunct (int c) {$?
+isspace	lib/ctype.h	?^static inline int isspace (int c) {$?
+issue_pio_command	devices/ide.c	?^issue_pio_command (struct channel *c, uint8_t comm?
+isupper	lib/ctype.h	?^static inline int isupper (int c) { return c >= 'A?
+isxdigit	lib/ctype.h	?^static inline int isxdigit (int c) {$?
+kbd_init	devices/kbd.c	?^kbd_init (void) $?
+kbd_print_stats	devices/kbd.c	?^kbd_print_stats (void) $?
+kernel_thread	threads/thread.c	?^kernel_thread (thread_func *function, void *aux) $?
+kernel_thread_frame	threads/thread.c	?^struct kernel_thread_frame $?
+keyboard_interrupt	devices/kbd.c	?^keyboard_interrupt (struct intr_frame *args UNUSED?
+keymap	devices/kbd.c	?^struct keymap$?
+kill	userprog/exception.c	?^kill (struct intr_frame *f) $?
+list_dir	examples/ls.c	?^list_dir (const char *dir, bool verbose) $?
+list_elem_to_block	devices/block.c	?^list_elem_to_block (struct list_elem *list_elem)$?
+load	userprog/process.c	?^load (const char *file_name, void (**eip) (void), ?
+load_segment	userprog/process.c	?^load_segment (struct file *file, off_t ofs, uint8_?
+locate_block_device	threads/init.c	?^locate_block_device (enum block_type role, const c?
+locate_block_devices	threads/init.c	?^locate_block_devices (void)$?
+lock	threads/synch.h	?^struct lock$?
+lock_acquire	threads/synch.c	?^lock_acquire (struct lock *lock)$?
+lock_held_by_current_thread	threads/synch.c	?^lock_held_by_current_thread (const struct lock *lo?
+lock_init	threads/synch.c	?^lock_init (struct lock *lock)$?
+lock_release	threads/synch.c	?^lock_release (struct lock *lock) $?
+lock_try_acquire	threads/synch.c	?^lock_try_acquire (struct lock *lock)$?
+lock_type	devices/block.c	?^block_type (struct block *block)$?
+lookup	filesys/directory.c	?^lookup (const struct dir *dir, const char *name,$?
+lookup_page	userprog/pagedir.c	?^lookup_page (uint32_t *pd, const void *vaddr, bool?
+make_code_desc	userprog/gdt.c	?^make_code_desc (int dpl)$?
+make_data_desc	userprog/gdt.c	?^make_data_desc (int dpl)$?
+make_gate	threads/interrupt.c	?^make_gate (void (*function) (void), int dpl, int t?
+make_gdtr_operand	userprog/gdt.c	?^make_gdtr_operand (uint16_t limit, void *base)$?
+make_idtr_operand	threads/interrupt.c	?^make_idtr_operand (uint16_t limit, void *base)$?
+make_intr_gate	threads/interrupt.c	?^make_intr_gate (void (*function) (void), int dpl)$?
+make_nonblocking	utils/squish-pty.c	?^make_nonblocking (int fd, bool nonblocking) $?
+make_noncanon	utils/squish-pty.c	?^make_noncanon (int fd, int vmin, int vtime)$?
+make_seg_desc	userprog/gdt.c	?^make_seg_desc (uint32_t base,$?
+make_trap_gate	threads/interrupt.c	?^make_trap_gate (void (*function) (void), int dpl)$?
+make_tss_desc	userprog/gdt.c	?^make_tss_desc (void *laddr)$?
+malloc	threads/malloc.c	?^malloc (size_t size) $?
+malloc_init	threads/malloc.c	?^malloc_init (void) $?
+map_key	devices/kbd.c	?^map_key (const struct keymap k[], unsigned scancod?
+memchr	lib/string.c	?^memchr (const void *block_, int ch_, size_t size) ?
+memcmp	lib/string.c	?^memcmp (const void *a_, const void *b_, size_t siz?
+memcpy	lib/string.c	?^memcpy (void *dst_, const void *src_, size_t size)?
+memmove	lib/string.c	?^memmove (void *dst_, const void *src_, size_t size?
+memset	lib/string.c	?^memset (void *dst_, int value, size_t size) $?
+move_cursor	devices/vga.c	?^move_cursor (void) $?
+msg	tests/lib.c	?^msg (const char *format, ...) $?
+name	tests/make-grade	?^foreach my $name (keys (%verdicts)) {$?
+newline	devices/vga.c	?^newline (void)$?
+next	devices/intq.c	?^next (int pos) $?
+next_thread_to_run	threads/thread.c	?^next_thread_to_run (void) $?
+nlz	lib/arithmetic.c	?^nlz (uint32_t x) $?
+ntr_disable	threads/interrupt.c	?^intr_disable (void) $?
+ntr_enable	threads/interrupt.c	?^intr_enable (void) $?
+ntr_get_level	threads/interrupt.c	?^intr_get_level (void) $?
+ntr_set_level	threads/interrupt.c	?^intr_set_level (enum intr_level level) $?
+off_t	filesys/off_t.h	?^typedef int32_t off_t;$?
+offsetof	lib/stddef.h	?^#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *?
+open	utils/pintos-mkdisk	?^open ($disk_handle, '>', $disk_fn) or die "$disk_f?
+outb	threads/io.h	?^outb (uint16_t port, uint8_t data)$?
+outl	threads/io.h	?^outl (uint16_t port, uint32_t data)$?
+output_dup	lib/stdio.c	?^output_dup (char ch, size_t cnt, void (*output) (c?
+output_sector	devices/ide.c	?^output_sector (struct channel *c, const void *sect?
+outsb	threads/io.h	?^outsb (uint16_t port, const void *addr, size_t cnt?
+outsl	threads/io.h	?^outsl (uint16_t port, const void *addr, size_t cnt?
+outsw	threads/io.h	?^outsw (uint16_t port, const void *addr, size_t cnt?
+outw	threads/io.h	?^outw (uint16_t port, uint16_t data)$?
+page_fault	userprog/exception.c	?^page_fault (struct intr_frame *f) $?
+page_from_pool	threads/palloc.c	?^page_from_pool (const struct pool *pool, void *pag?
+pagedir_activate	userprog/pagedir.c	?^pagedir_activate (uint32_t *pd) $?
+pagedir_clear_page	userprog/pagedir.c	?^pagedir_clear_page (uint32_t *pd, void *upage) $?
+pagedir_create	userprog/pagedir.c	?^pagedir_create (void) $?
+pagedir_destroy	userprog/pagedir.c	?^pagedir_destroy (uint32_t *pd) $?
+pagedir_get_page	userprog/pagedir.c	?^pagedir_get_page (uint32_t *pd, const void *uaddr)?
+pagedir_is_accessed	userprog/pagedir.c	?^pagedir_is_accessed (uint32_t *pd, const void *vpa?
+pagedir_is_dirty	userprog/pagedir.c	?^pagedir_is_dirty (uint32_t *pd, const void *vpage)?
+pagedir_set_accessed	userprog/pagedir.c	?^pagedir_set_accessed (uint32_t *pd, const void *vp?
+pagedir_set_dirty	userprog/pagedir.c	?^pagedir_set_dirty (uint32_t *pd, const void *vpage?
+pagedir_set_page	userprog/pagedir.c	?^pagedir_set_page (uint32_t *pd, void *upage, void ?
+paging_init	threads/init.c	?^paging_init (void)$?
+palloc_flags	threads/palloc.h	?^enum palloc_flags$?
+palloc_free_multiple	threads/palloc.c	?^palloc_free_multiple (void *pages, size_t page_cnt?
+palloc_free_page	threads/palloc.c	?^palloc_free_page (void *page) $?
+palloc_get_multiple	threads/palloc.c	?^palloc_get_multiple (enum palloc_flags flags, size?
+palloc_get_page	threads/palloc.c	?^palloc_get_page (enum palloc_flags flags) $?
+palloc_init	threads/palloc.c	?^palloc_init (size_t user_page_limit)$?
+parse_conversion	lib/stdio.c	?^parse_conversion (const char *format, struct print?
+parse_octal_field	lib/ustar.c	?^parse_octal_field (const char *s, size_t size, uns?
+parse_options	threads/init.c	?^parse_options (char **argv)$?
+partition	devices/partition.c	?^struct partition$?
+partition_read	devices/partition.c	?^partition_read (void *p_, block_sector_t sector, v?
+partition_scan	devices/partition.c	?^partition_scan (struct block *block)$?
+partition_table	devices/partition.c	?^  struct partition_table$?
+partition_table_entry	devices/partition.c	?^  struct partition_table_entry$?
+partition_type_name	devices/partition.c	?^partition_type_name (uint8_t type)$?
+partition_write	devices/partition.c	?^partition_write (void *p_, block_sector_t sector, ?
+pd_no	threads/pte.h	?^static inline uintptr_t pd_no (const void *va) {$?
+pde_create	threads/pte.h	?^static inline uint32_t pde_create (uint32_t *pt) {?
+pde_get_pt	threads/pte.h	?^static inline uint32_t *pde_get_pt (uint32_t pde) ?
+pg_no	threads/vaddr.h	?^static inline uintptr_t pg_no (const void *va) {$?
+pg_ofs	threads/vaddr.h	?^static inline unsigned pg_ofs (const void *va) {$?
+pg_round_down	threads/vaddr.h	?^static inline void *pg_round_down (const void *va)?
+pg_round_up	threads/vaddr.h	?^static inline void *pg_round_up (const void *va) {?
+pic_end_of_interrupt	threads/interrupt.c	?^pic_end_of_interrupt (int irq) $?
+pic_init	threads/interrupt.c	?^pic_init (void)$?
+pipe	utils/squish-pty.c	?^  struct pipe $?
+pit_configure_channel	devices/pit.c	?^pit_configure_channel (int channel, int mode, int ?
+pool	threads/palloc.c	?^struct pool$?
+prepend	examples/pwd.c	?^prepend (const char *prefix,$?
+print_human_readable_size	lib/stdio.c	?^print_human_readable_size (uint64_t size) $?
+print_stats	devices/shutdown.c	?^print_stats (void)$?
+printf	lib/stdio.c	?^printf (const char *format, ...) $?
+printf_conversion	lib/stdio.c	?^struct printf_conversion $?
+process_activate	userprog/process.c	?^process_activate (void)$?
+process_execute	userprog/process.c	?^process_execute (const char *file_name) $?
+process_exit	userprog/process.c	?^process_exit (void)$?
+process_wait	userprog/process.c	?^process_wait (tid_t child_tid UNUSED) $?
+pt_no	threads/pte.h	?^static inline unsigned pt_no (const void *va) {$?
+pte_create_kernel	threads/pte.h	?^static inline uint32_t pte_create_kernel (void *pa?
+pte_create_user	threads/pte.h	?^static inline uint32_t pte_create_user (void *page?
+pte_get_page	threads/pte.h	?^static inline void *pte_get_page (uint32_t pte) {$?
+ptov	threads/vaddr.h	?^ptov (uintptr_t paddr)$?
+ptrdiff_t	lib/stddef.h	?^typedef __PTRDIFF_TYPE__ ptrdiff_t;$?
+putc_poll	devices/serial.c	?^putc_poll (uint8_t byte) $?
+qsort	lib/stdlib.c	?^qsort (void *array, size_t cnt, size_t size,$?
+random_bytes	lib/random.c	?^random_bytes (void *buf_, size_t size) $?
+random_init	lib/random.c	?^random_init (unsigned seed)$?
+random_ulong	lib/random.c	?^random_ulong (void) $?
+read_command_line	threads/init.c	?^read_command_line (void)$?
+read_line	examples/shell.c	?^read_line (char line[], size_t size) $?
+read_partition_table	devices/partition.c	?^read_partition_table (struct block *block, block_s?
+real_time_delay	devices/timer.c	?^real_time_delay (int64_t num, int32_t denom)$?
+real_time_sleep	devices/timer.c	?^real_time_sleep (int64_t num, int32_t denom)$?
+realloc	threads/malloc.c	?^realloc (void *old_block, size_t new_size) $?
+reg_alt_status	devices/ide.c	?^#define reg_alt_status(CHANNEL) reg_ctl (CHANNEL) ?
+reg_command	devices/ide.c	?^#define reg_command(CHANNEL) reg_status (CHANNEL) ?
+reg_ctl	devices/ide.c	?^#define reg_ctl(CHANNEL) ((CHANNEL)->reg_base + 0x?
+reg_data	devices/ide.c	?^#define reg_data(CHANNEL) ((CHANNEL)->reg_base + 0?
+reg_device	devices/ide.c	?^#define reg_device(CHANNEL) ((CHANNEL)->reg_base +?
+reg_error	devices/ide.c	?^#define reg_error(CHANNEL) ((CHANNEL)->reg_base + ?
+reg_lbah	devices/ide.c	?^#define reg_lbah(CHANNEL) ((CHANNEL)->reg_base + 5?
+reg_lbal	devices/ide.c	?^#define reg_lbal(CHANNEL) ((CHANNEL)->reg_base + 3?
+reg_lbam	devices/ide.c	?^#define reg_lbam(CHANNEL) ((CHANNEL)->reg_base + 4?
+reg_nsect	devices/ide.c	?^#define reg_nsect(CHANNEL) ((CHANNEL)->reg_base + ?
+reg_status	devices/ide.c	?^#define reg_status(CHANNEL) ((CHANNEL)->reg_base +?
+register_handler	threads/interrupt.c	?^register_handler (uint8_t vec_no, int dpl, enum in?
+relay	utils/squish-pty.c	?^relay (int pty, int dead_child_fd) $?
+reset_channel	devices/ide.c	?^reset_channel (struct channel *c) $?
+rtc_get_time	devices/rtc.c	?^rtc_get_time (void)$?
+run_actions	threads/init.c	?^run_actions (char **argv)$?
+run_task	threads/init.c	?^run_task (char **argv)$?
+running_thread	threads/thread.c	?^running_thread (void) $?
+schedule	threads/thread.c	?^schedule (void) $?
+sdiv64	lib/arithmetic.c	?^sdiv64 (int64_t n, int64_t d)$?
+seg_class	userprog/gdt.c	?^enum seg_class$?
+seg_granularity	userprog/gdt.c	?^enum seg_granularity$?
+select_device	devices/ide.c	?^select_device (const struct ata_disk *d)$?
+select_device_wait	devices/ide.c	?^select_device_wait (const struct ata_disk *d) $?
+select_sector	devices/ide.c	?^select_sector (struct ata_disk *d, block_sector_t ?
+sema_down	threads/synch.c	?^sema_down (struct semaphore *sema) $?
+sema_init	threads/synch.c	?^sema_init (struct semaphore *sema, unsigned value)?
+sema_self_test	threads/synch.c	?^sema_self_test (void) $?
+sema_test_helper	threads/synch.c	?^sema_test_helper (void *sema_) $?
+sema_try_down	threads/synch.c	?^sema_try_down (struct semaphore *sema) $?
+sema_up	threads/synch.c	?^sema_up (struct semaphore *sema) $?
+semaphore	threads/synch.h	?^struct semaphore$?
+semaphore_elem	threads/synch.c	?^struct semaphore_elem $?
+serial_flush	devices/serial.c	?^serial_flush (void) $?
+serial_init_queue	devices/serial.c	?^serial_init_queue (void) $?
+serial_interrupt	devices/serial.c	?^serial_interrupt (struct intr_frame *f UNUSED) $?
+serial_notify	devices/serial.c	?^serial_notify (void) $?
+serial_putc	devices/serial.c	?^serial_putc (uint8_t byte) $?
+set_serial	devices/serial.c	?^set_serial (int bps)$?
+setup_stack	userprog/process.c	?^setup_stack (void **esp) $?
+shift_key	devices/kbd.c	?^      struct shift_key $?
+shuffle	tests/lib.c	?^shuffle (void *buf_, size_t cnt, size_t size) $?
+shutdown	devices/shutdown.c	?^shutdown (void)$?
+shutdown_configure	devices/shutdown.c	?^shutdown_configure (enum shutdown_type type)$?
+shutdown_power_off	devices/shutdown.c	?^shutdown_power_off (void)$?
+shutdown_reboot	devices/shutdown.c	?^shutdown_reboot (void)$?
+shutdown_type	devices/shutdown.h	?^enum shutdown_type$?
+sigchld_handler	utils/squish-pty.c	?^sigchld_handler (int signo __attribute__ ((unused)?
+signal	devices/intq.c	?^signal (struct intq *q UNUSED, struct thread **wai?
+size_t	lib/stddef.h	?^typedef __SIZE_TYPE__ size_t;$?
+smod64	lib/arithmetic.c	?^smod64 (int64_t n, int64_t d)$?
+snprintf	lib/stdio.c	?^snprintf (char *buffer, size_t buf_size, const cha?
+sort	lib/stdlib.c	?^sort (void *array, size_t cnt, size_t size,$?
+speaker_beep	devices/speaker.c	?^speaker_beep (void)$?
+speaker_off	devices/speaker.c	?^speaker_off (void)$?
+speaker_on	devices/speaker.c	?^speaker_on (int frequency)$?
+start_process	userprog/process.c	?^start_process (void *file_name_)$?
+strcat	lib/string.h	?^#define strcat dont_use_strcat_use_strlcat$?
+strchr	lib/string.c	?^strchr (const char *string, int c_) $?
+strcmp	lib/string.c	?^strcmp (const char *a_, const char *b_) $?
+strcpy	lib/string.h	?^#define strcpy dont_use_strcpy_use_strlcpy$?
+strcspn	lib/string.c	?^strcspn (const char *string, const char *stop) $?
+strip_antisocial_prefixes	lib/ustar.c	?^strip_antisocial_prefixes (const char *file_name)$?
+strlcat	lib/string.c	?^strlcat (char *dst, const char *src, size_t size) ?
+strlcpy	lib/string.c	?^strlcpy (char *dst, const char *src, size_t size) ?
+strlen	lib/string.c	?^strlen (const char *string) $?
+strncat	lib/string.h	?^#define strncat dont_use_strncat_use_strlcat$?
+strncpy	lib/string.h	?^#define strncpy dont_use_strncpy_use_strlcpy$?
+strnlen	lib/string.c	?^strnlen (const char *string, size_t maxlen) $?
+strpbrk	lib/string.c	?^strpbrk (const char *string, const char *stop) $?
+strrchr	lib/string.c	?^strrchr (const char *string, int c_) $?
+strspn	lib/string.c	?^strspn (const char *string, const char *skip) $?
+strstr	lib/string.c	?^strstr (const char *haystack, const char *needle) ?
+strtok	lib/string.h	?^#define strtok dont_use_strtok_use_strtok_r$?
+strtok_r	lib/string.c	?^strtok_r (char *s, const char *delimiters, char **?
+swap	tests/lib.c	?^swap (void *a_, void *b_, size_t size) $?
+swap_byte	lib/random.c	?^swap_byte (uint8_t *a, uint8_t *b) $?
+switch_entry_frame	threads/switch.h	?^struct switch_entry_frame$?
+switch_threads_frame	threads/switch.h	?^struct switch_threads_frame $?
+syscall_handler	userprog/syscall.c	?^syscall_handler (struct intr_frame *f UNUSED) $?
+syscall_init	userprog/syscall.c	?^syscall_init (void) $?
+test	tests/make-grade	?^for my $test (@failures) {$?
+thread	threads/thread.h	?^struct thread$?
+thread_block	threads/thread.c	?^thread_block (void) $?
+thread_create	threads/thread.c	?^thread_create (const char *name, int priority,$?
+thread_current	threads/thread.c	?^thread_current (void) $?
+thread_exit	threads/thread.c	?^thread_exit (void) $?
+thread_foreach	threads/thread.c	?^thread_foreach (thread_action_func *func, void *au?
+thread_func	threads/thread.h	?^typedef void thread_func (void *aux);$?
+thread_get_load_avg	threads/thread.c	?^thread_get_load_avg (void) $?
+thread_get_nice	threads/thread.c	?^thread_get_nice (void) $?
+thread_get_priority	threads/thread.c	?^thread_get_priority (void) $?
+thread_get_recent_cpu	threads/thread.c	?^thread_get_recent_cpu (void) $?
+thread_name	threads/thread.c	?^thread_name (void) $?
+thread_print_stats	threads/thread.c	?^thread_print_stats (void) $?
+thread_schedule_tail	threads/thread.c	?^thread_schedule_tail (struct thread *prev)$?
+thread_set_nice	threads/thread.c	?^thread_set_nice (int nice UNUSED) $?
+thread_set_priority	threads/thread.c	?^thread_set_priority (int new_priority) $?
+thread_start	threads/thread.c	?^thread_start (void) $?
+thread_status	threads/thread.h	?^enum thread_status$?
+thread_tick	threads/thread.c	?^thread_tick (void) $?
+thread_tid	threads/thread.c	?^thread_tid (void) $?
+thread_unblock	threads/thread.c	?^thread_unblock (struct thread *t) $?
+thread_yield	threads/thread.c	?^thread_yield (void) $?
+tid_t	threads/thread.h	?^typedef int tid_t;$?
+time_t	devices/rtc.h	?^typedef unsigned long time_t;$?
+timer_calibrate	devices/timer.c	?^timer_calibrate (void)$?
+timer_elapsed	devices/timer.c	?^timer_elapsed (int64_t then)$?
+timer_init	devices/timer.c	?^timer_init (void)$?
+timer_interrupt	devices/timer.c	?^timer_interrupt (struct intr_frame *args UNUSED)$?
+timer_mdelay	devices/timer.c	?^timer_mdelay (int64_t ms)$?
+timer_msleep	devices/timer.c	?^timer_msleep (int64_t ms)$?
+timer_ndelay	devices/timer.c	?^timer_ndelay (int64_t ns)$?
+timer_nsleep	devices/timer.c	?^timer_nsleep (int64_t ns)$?
+timer_print_stats	devices/timer.c	?^timer_print_stats (void)$?
+timer_sleep	devices/timer.c	?^timer_sleep (int64_t ticks)$?
+timer_ticks	devices/timer.c	?^timer_ticks (void)$?
+timer_udelay	devices/timer.c	?^timer_udelay (int64_t us)$?
+timer_usleep	devices/timer.c	?^timer_usleep (int64_t us)$?
+tolower	lib/ctype.h	?^static inline int tolower (int c) { return isupper?
+too_many_loops	devices/timer.c	?^too_many_loops (unsigned loops)$?
+toupper	lib/ctype.h	?^static inline int toupper (int c) { return islower?
+true	lib/stdbool.h	?^#define true	1$?
+tss	userprog/tss.c	?^struct tss$?
+tss_get	userprog/tss.c	?^tss_get (void) $?
+tss_init	userprog/tss.c	?^tss_init (void) $?
+tss_update	userprog/tss.c	?^tss_update (void) $?
+udiv64	lib/arithmetic.c	?^udiv64 (uint64_t n, uint64_t d)$?
+uint16_t	lib/stdint.h	?^typedef unsigned short int uint16_t;$?
+uint32_t	lib/stdint.h	?^typedef unsigned int uint32_t;$?
+uint64_t	lib/stdint.h	?^typedef unsigned long long int uint64_t;$?
+uint8_t	lib/stdint.h	?^typedef unsigned char uint8_t;$?
+uintmax_t	lib/stdint.h	?^typedef uint64_t uintmax_t;$?
+uintptr_t	lib/stdint.h	?^typedef uint32_t uintptr_t;$?
+umod64	lib/arithmetic.c	?^umod64 (uint64_t n, uint64_t d)$?
+unexpected_interrupt	threads/interrupt.c	?^unexpected_interrupt (const struct intr_frame *f)$?
+usage	examples/insult.c	?^usage (int ret_code, const char *message, ...) PRI?
+ustar_header	lib/ustar.c	?^struct ustar_header$?
+ustar_make_header	lib/ustar.c	?^ustar_make_header (const char *file_name, enum ust?
+ustar_parse_header	lib/ustar.c	?^ustar_parse_header (const char header[USTAR_HEADER?
+ustar_type	lib/ustar.h	?^enum ustar_type$?
+va_arg	lib/stdarg.h	?^#define va_arg(LIST, TYPE)	__builtin_va_arg (LIST,?
+va_copy	lib/stdarg.h	?^#define va_copy(DST, SRC)	__builtin_va_copy (DST, ?
+va_end	lib/stdarg.h	?^#define va_end(LIST)            __builtin_va_end (?
+va_list	lib/stdarg.h	?^typedef __builtin_va_list va_list;$?
+va_start	lib/stdarg.h	?^#define va_start(LIST, ARG)	__builtin_va_start (LI?
+validate_segment	userprog/process.c	?^validate_segment (const struct Elf32_Phdr *phdr, s?
+vga_putc	devices/vga.c	?^vga_putc (int c)$?
+vmsg	tests/lib.c	?^vmsg (const char *format, va_list args, const char?
+vsnprintf	lib/stdio.c	?^vsnprintf (char *buffer, size_t buf_size, const ch?
+vsnprintf_aux	lib/stdio.c	?^struct vsnprintf_aux $?
+vsnprintf_helper	lib/stdio.c	?^vsnprintf_helper (char ch, void *aux_)$?
+vtop	threads/vaddr.h	?^vtop (const void *vaddr)$?
+wait	devices/intq.c	?^wait (struct intq *q UNUSED, struct thread **waite?
+wait_children	tests/lib.c	?^wait_children (pid_t pids[], size_t child_cnt) $?
+wait_until_idle	devices/ide.c	?^wait_until_idle (const struct ata_disk *d) $?
+wait_while_busy	devices/ide.c	?^wait_while_busy (const struct ata_disk *d) $?
+while	tests/lib.h	?^        while (0)$?
+write_ier	devices/serial.c	?^write_ier (void) $?
+zero	threads/intr-stubs.S	?^#define zero                                    \\?
+BLOCK_CNT	tests/filesys/base/random.inc	?^#define BLOCK_CNT (TEST_SIZE / BLOCK_SIZE)$?
+BLOCK_SIZE	tests/filesys/base/lg-random.c	?^#define BLOCK_SIZE 512$?
+BUF_SIZE	tests/filesys/base/syn-read.h	?^#define BUF_SIZE 1024$?
+CHILD_CNT	tests/filesys/base/syn-read.c	?^#define CHILD_CNT 10$?
+CHUNK_CNT	tests/filesys/extended/syn-rw.h	?^#define CHUNK_CNT 512$?
+CHUNK_SIZE	tests/filesys/base/syn-write.h	?^#define CHUNK_SIZE 512$?
+DIRECTORY	tests/filesys/extended/grow-dir-lg.c	?^#define DIRECTORY "/x"$?
+DIR_PREFIX	tests/filesys/extended/grow-dir.inc	?^#define DIR_PREFIX DIRECTORY "/"$?
+FILE_CNT	tests/filesys/extended/grow-dir-lg.c	?^#define FILE_CNT 50$?
+FILE_SIZE	tests/filesys/extended/grow-two-files.c	?^#define FILE_SIZE 8143$?
+Mchild-syn-read	tests/filesys/base/child-syn-read.c	?^main (int argc, const char *argv[]) $?
+Mchild-syn-rw	tests/filesys/extended/child-syn-rw.c	?^main (int argc, const char *argv[]) $?
+Mchild-syn-wrt	tests/filesys/base/child-syn-wrt.c	?^main (int argc, char *argv[])$?
+Mmulti-oom	tests/userprog/no-vm/multi-oom.c	?^main (int argc, char *argv[])$?
+Mtar	tests/filesys/extended/tar.c	?^main (int argc, char *argv[]) $?
+OUTPUT_FORMAT	threads/build/threads/kernel.lds.s	?^OUTPUT_FORMAT("elf32-i386")$?
+TESTS_FILESYS_BASE_SYN_READ_H	tests/filesys/base/syn-read.h	?^#define TESTS_FILESYS_BASE_SYN_READ_H$?
+TESTS_FILESYS_BASE_SYN_WRITE_H	tests/filesys/base/syn-write.h	?^#define TESTS_FILESYS_BASE_SYN_WRITE_H$?
+TESTS_FILESYS_EXTENDED_MK_TREE_H	tests/filesys/extended/mk-tree.h	?^#define TESTS_FILESYS_EXTENDED_MK_TREE_H$?
+TESTS_FILESYS_EXTENDED_SYN_RW_H	tests/filesys/extended/syn-rw.h	?^#define TESTS_FILESYS_EXTENDED_SYN_RW_H$?
+TEST_SIZE	tests/filesys/base/lg-create.c	?^#define TEST_SIZE 75678$?
+a	tests/filesys/extended/dir-mk-tree-persistence.ck	?^for my $a (0...3) {$?
+archive_directory	tests/filesys/extended/tar.c	?^archive_directory (char file_name[], size_t file_n?
+archive_file	tests/filesys/extended/tar.c	?^archive_file (char file_name[], size_t file_name_s?
+archive_ordinary_file	tests/filesys/extended/tar.c	?^archive_ordinary_file (const char *file_name, int ?
+begin	tests/filesys/base/lg-create.ck	?^(lg-create) create "blargle"$?
+check_file_size	tests/filesys/extended/grow-file-size.c	?^check_file_size (int fd, long ofs) $?
+check_tell	tests/filesys/extended/grow-tell.c	?^check_tell (int fd, long ofs) $?
+child_termination_mode	tests/userprog/no-vm/multi-oom.c	?^enum child_termination_mode { RECURSE, CRASH };$?
+consume_some_resources	tests/userprog/no-vm/multi-oom.c	?^consume_some_resources (void)$?
+consume_some_resources_and_die	tests/userprog/no-vm/multi-oom.c	?^consume_some_resources_and_die (int seed)$?
+do_mkdir	tests/filesys/extended/mk-tree.c	?^static void do_mkdir (const char *format, ...) PRI?
+do_remove	tests/filesys/extended/dir-rm-tree.c	?^static void do_remove (const char *format, ...) PR?
+do_touch	tests/filesys/extended/mk-tree.c	?^do_touch (const char *format, ...)$?
+do_write	tests/filesys/extended/tar.c	?^do_write (int fd, const char *buffer, int size, bo?
+for	tests/filesys/extended/dir-vine-persistence.ck	?^for (my ($i) = 0; $i < 10; $i++) {$?
+ifeq	tests/filesys/extended/Make.tests	?^ifeq ($(filter vm, $(KERNEL_SUBDIRS)), vm)$?
+make_tar_archive	tests/filesys/extended/tar.c	?^make_tar_archive (const char *archive_name, char *?
+mlfqs	threads/build/threads/init.o	?^?
+return_block_size	tests/filesys/base/seq-block.inc	?^return_block_size (void) $?
+return_random	tests/filesys/base/seq-random.inc	?^return_random (void) $?
+return_test_size	tests/filesys/base/full.inc	?^return_test_size (void) $?
+spawn_child	tests/userprog/no-vm/multi-oom.c	?^spawn_child (int c, enum child_termination_mode mo?
+test_main	tests/filesys/base/full.inc	?^test_main (void) $?
+usage	tests/filesys/extended/tar.c	?^usage (void) $?
+wrap_open	tests/filesys/extended/dir-rm-cwd.c	?^wrap_open (const char *name) $?
+write_header	tests/filesys/extended/tar.c	?^write_header (const char *file_name, enum ustar_ty?
+write_some_bytes	tests/filesys/extended/grow-two-files.c	?^write_some_bytes (const char *file_name, int fd, c?
