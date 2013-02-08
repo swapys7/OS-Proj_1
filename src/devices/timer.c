@@ -30,6 +30,9 @@ static void busy_wait (int64_t loops);
 static void real_time_sleep (int64_t num, int32_t denom);
 static void real_time_delay (int64_t num, int32_t denom);
 
+/* semaphore for timer_sleep function */
+struct lock timer_sleep_lock;
+
 /* Sets up the timer to interrupt TIMER_FREQ times per second,
    and registers the corresponding interrupt. */
 void
@@ -37,6 +40,11 @@ timer_init (void)
 {
   pit_configure_channel (0, 2, TIMER_FREQ);
   intr_register_ext (0x20, timer_interrupt, "8254 Timer");
+
+  // init timer sleep lock here with the rest of the timer
+  // system
+  lock_init(&timer_sleep_lock);
+
 }
 
 /* Calibrates loops_per_tick, used to implement brief delays. */
@@ -85,53 +93,33 @@ timer_elapsed (int64_t then)
 }
 
 /* Sleeps for approximately TICKS timer ticks.  Interrupts must
-   be turned on. */
+   be turned on. This code figures out what time it will be when
+   the thread should wake up, then puts the thread on a list of
+   sleeping threads, which is iterated through by check_sleep_list()
+   where threads are woken if they're done sleeping */
 void
 timer_sleep (int64_t ticks)
 {
+  lock_acquire(&timer_sleep_lock);
+
   int64_t start = timer_ticks ();
 
   ASSERT (intr_get_level () == INTR_ON);
 
-  // do not yield for the number of ticks.
-  // instead, use a semaphore
-  // using this code, each thread ends up
-  // yielding based on how many ticks left.
-  // this just puts every thread into a busy
-  // loop but doesn't put them to sleep.
+  int64_t end = start + ticks;
+  struct thread *t = thread_current ();
+  ASSERT (t != NULL);
+  t->end_time = end;
 
-  /* Justin driving */
-  // put the current thread to sleep and call
-  // the scheduler, which will make a new thread
-  // the active thread.
-  //
-  //
-  //
-  //
-  // save current running thread pointer
-  // block thread
-  // semaUP
-  //
-  // loop until ticks done
-  //
-  // move saved thread back onto ready queue
-  // semaDN
-  //
-  //
-  // pass control to another thread & add self to blocked queue
-  // thread_block() isn't allowed because it reqs INTR_OFF
+  /* take it off the ready_list */
+  list_remove (&t->elem);
+  /* add it to the wait-list*/
+  list_push_back (&sleep_list, &t->elem);
+  t->status = THREAD_SLEEPING;
 
-  // put thread on blocked queue manually
-  // then call schedule() ?
-  // This would mean implementing a blocked queue
+  lock_release(&timer_sleep_lock);
 
-  // when timer is done,
-  // put the blocked thread back onto the
-  // active queue and ready to run
-  while (timer_elapsed (start) < ticks)
-    thread_yield ();
-
-
+  thread_yield ();
 }
 
 /* Sleeps for approximately MS milliseconds.  Interrupts must be

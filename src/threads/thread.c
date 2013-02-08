@@ -28,6 +28,10 @@ static struct list ready_list;
    when they are first scheduled and removed when they exit. */
 static struct list all_list;
 
+/* List of sleeping processes. Processes that have called
+    thread_sleep() */
+struct list sleep_list;
+
 /* Idle thread. */
 static struct thread *idle_thread;
 
@@ -70,6 +74,7 @@ static void *alloc_frame (struct thread *, size_t size);
 static void schedule (void);
 void thread_schedule_tail (struct thread *prev);
 static tid_t allocate_tid (void);
+void check_sleep_list (int64_t totalTicks);
 
 /* INITIALIZES THE THREADING SYSTEM by transforming the code
    that's currently running into a thread.  This can't work in
@@ -92,6 +97,7 @@ thread_init (void)
   lock_init (&tid_lock);
   list_init (&ready_list);
   list_init (&all_list);
+  list_init (&sleep_list);
 
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread ();
@@ -123,7 +129,7 @@ void
 thread_tick (void)
 {
   struct thread *t = thread_current ();
-
+  int64_t totalTicks;
   /* Update statistics. */
   if (t == idle_thread)
     idle_ticks++;
@@ -134,9 +140,39 @@ thread_tick (void)
   else
     kernel_ticks++;
 
+  /* check whether any sleeping threads can be awoken */
+  totalTicks = timer_ticks ();
+  check_sleep_list (totalTicks);
+
   /* Enforce preemption. */
   if (++thread_ticks >= TIME_SLICE)
     intr_yield_on_return ();
+}
+
+/* iterate through sleep_list
+    wake any threads that are done sleeping */
+void
+check_sleep_list (int64_t totalTicks)
+{
+  /* List traversal. */
+
+  struct list_elem *e;
+
+  for (e = list_begin (&sleep_list);
+       e != list_end (&sleep_list);
+       e = list_next (e))
+  {
+    struct thread *t = list_entry (e, struct thread, elem);
+
+    /* for every sleeping thread whose sleep time is up... */
+    if (t->end_time <= totalTicks) {
+      t->status = THREAD_READY;
+      /* take it off the sleep_list */
+      list_remove(e);
+      /* put it on the ready_list */
+      list_push_back (&ready_list, e);
+    }
+  }
 }
 
 /* Prints thread statistics. */

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"var",
+				"variables"
+			],
+			[
 				"row",
 				"rowLine"
 			],
@@ -48,74 +52,10 @@
 	"buffers":
 	[
 		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 6675,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/threads/init.c",
-			"settings":
-			{
-				"buffer_size": 11531,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/threads/synch.h",
-			"settings":
-			{
-				"buffer_size": 1419,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/threads/interrupt.h",
-			"settings":
-			{
-				"buffer_size": 2591,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/devices/timer.c",
-			"settings":
-			{
-				"buffer_size": 7143,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/devices/timer.h",
-			"settings":
-			{
-				"buffer_size": 687,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/tests/threads/alarm-wait.c",
-			"settings":
-			{
-				"buffer_size": 4145,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/tests/threads/alarm-priority.c",
-			"settings":
-			{
-				"buffer_size": 1868,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/threads/synch.c",
 			"settings":
 			{
-				"buffer_size": 9877,
+				"buffer_size": 9915,
 				"line_ending": "Unix"
 			}
 		},
@@ -128,10 +68,34 @@
 			}
 		},
 		{
-			"file": "src/lib/kernel/list.c",
+			"file": "src/threads/thread.c",
 			"settings":
 			{
-				"buffer_size": 14628,
+				"buffer_size": 16483,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/devices/intq.c",
+			"settings":
+			{
+				"buffer_size": 2792,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/devices/timer.c",
+			"settings":
+			{
+				"buffer_size": 7218,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/threads/init.c",
+			"settings":
+			{
+				"buffer_size": 11531,
 				"line_ending": "Unix"
 			}
 		},
@@ -144,10 +108,10 @@
 			}
 		},
 		{
-			"file": "src/threads/thread.c",
+			"file": "src/lib/kernel/list.c",
 			"settings":
 			{
-				"buffer_size": 16519,
+				"buffer_size": 14628,
 				"line_ending": "Unix"
 			}
 		}
@@ -158,6 +122,10 @@
 		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"sy",
+				"Set Syntax: C"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -235,11 +203,11 @@
 				"Set Syntax: SQL"
 			]
 		],
-		"width": 449.0
+		"width": 575.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 174.0
 	},
 	"distraction_free":
 	{
@@ -252,21 +220,34 @@
 	},
 	"file_history":
 	[
-		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/thread.c",
-		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/interrupt.c",
-		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/synch.c",
-		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/lib/kernel/console.c",
-		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/thread.h",
-		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/lib/kernel/list.h",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/init.h",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/.tags",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/README.md",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/threads_design.txt",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/thread.h",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/thread.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/synch.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/synch.h",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/devices/timer.c",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Ethan/Desktop/SnippetsIWant",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/init.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/lib/kernel/list.h",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/lib/kernel/list.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/tests/threads/alarm-priority.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/tests/threads/alarm-wait.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/devices/timer.h",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/interrupt.h",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/threads/interrupt.c",
+		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/lib/kernel/console.c",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/1OS_Proj/src/Makefile.kernel",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/stuffADoAboutProj1.txt",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/src/Makefile.build",
 		"/Users/Ethan/Library/Application Support/Sublime Text 2/Settings/Session.sublime_session",
 		"/Users/Ethan/Library/Application Support/Sublime Text 2/Settings/SideBarEnhancements.json",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/systemHello.c",
-		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/SystemsHW1.txt",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/systemVprocedureCall.c",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/OS.sublime-workspace",
@@ -275,7 +256,6 @@
 		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/DELETE/DELETE.c",
 		"/hello/hello.c",
-		"/Users/Ethan/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
 		"/Users/Ethan/Dropbox/OperatingSystemsCS439/git/1HW/bin/testtime",
 		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/git/searchAssn/1HW",
 		"/Users/Ethan/Dropbox/ArtificialIntelligenceCS378HCS343/AI_Projects/eightpuzzle.py",
@@ -367,19 +347,7 @@
 		"/Users/Ethan/Dropbox/CS429/429HW/429HW7/445.lisp",
 		"/Users/Ethan/Dropbox/CSyStuff/Vim Stuff/vimSSH.txt",
 		"/Users/Ethan/Desktop/bashrc",
-		"/Users/Ethan/Desktop/dir_colors",
-		"/Applications/valgrind-3.8.0/exp-bbv/tests/amd64-linux/Makefile",
-		"/Users/Ethan/Dropbox/CS347/347HW/347Lab8/Lab8Queries.sql",
-		"/Users/Ethan/Dropbox/CS429/429HW/429HW1/HW1/Debug/makefile",
-		"/Users/Ethan/Dropbox/CS429/429HW/429HW1/Prob59/Debug/makefile",
-		"/Users/Ethan/Dropbox/CS429/429HW/429HW1/Prob59/Debug/prob_59.d",
-		"/Users/Ethan/Dropbox/CSyStuff/CollectiveIntelligence/Chapter2/recommendations.py",
-		"/Users/Ethan/Dropbox/CSyStuff/CollectiveIntelligence/Chapter2/data/movielens/u.txt",
-		"/Users/Ethan/Applications/indri-5.3/site-search/README",
-		"/Users/Ethan/Downloads/clef2007clsrENv5.0/Qrels/Standard/Qrels.txt",
-		"/Users/Ethan/Downloads/rapidsvn-0.12.0-1 2/README",
-		"/Users/Ethan/Downloads/fibrec1.lisp",
-		"/Users/Ethan/Downloads/README-release-5.3.txt"
+		"/Users/Ethan/Desktop/dir_colors"
 	],
 	"find":
 	{
@@ -398,6 +366,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"thread_create",
+			"idle_ticks",
+			"init_thread",
+			"PRI_",
+			"block_",
+			"somethn",
+			"`",
 			"thread_yield",
 			"N_iterations",
 			"res",
@@ -486,259 +461,39 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "README.md",
+					"file": "src/threads/synch.c",
 					"settings":
 					{
-						"buffer_size": 6675,
+						"buffer_size": 9915,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								90,
-								90
+								3082,
+								3082
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 417.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/threads/init.c",
-					"settings":
-					{
-						"buffer_size": 11531,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7364,
-								7364
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2063.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/threads/synch.h",
-					"settings":
-					{
-						"buffer_size": 1419,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								836,
-								836
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/threads/interrupt.h",
-					"settings":
-					{
-						"buffer_size": 2591,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1298,
-								1298
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 284.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/devices/timer.c",
-					"settings":
-					{
-						"buffer_size": 7143,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6439,
-								6439
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4496.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/devices/timer.h",
-					"settings":
-					{
-						"buffer_size": 687,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								550,
-								550
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/tests/threads/alarm-wait.c",
-					"settings":
-					{
-						"buffer_size": 4145,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2554,
-								2600
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 812.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/tests/threads/alarm-priority.c",
-					"settings":
-					{
-						"buffer_size": 1868,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1716,
-								1757
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/threads/synch.c",
-					"settings":
-					{
-						"buffer_size": 9877,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1711,
-								1674
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "src/threads/thread.h",
 					"settings":
 					{
@@ -749,8 +504,8 @@
 						"selection":
 						[
 							[
-								5265,
-								5265
+								4521,
+								4521
 							]
 						],
 						"settings":
@@ -760,25 +515,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 979.0,
+						"translation.y": 2052.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "src/lib/kernel/list.c",
+					"buffer": 2,
+					"file": "src/threads/thread.c",
 					"settings":
 					{
-						"buffer_size": 14628,
+						"buffer_size": 16483,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12319,
-								12319
+								3890,
+								3890
 							]
 						],
 						"settings":
@@ -788,13 +543,97 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7262.0,
+						"translation.y": 2588.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 3,
+					"file": "src/devices/intq.c",
+					"settings":
+					{
+						"buffer_size": 2792,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1324.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/devices/timer.c",
+					"settings":
+					{
+						"buffer_size": 7218,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1928,
+								1939
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1014.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/threads/init.c",
+					"settings":
+					{
+						"buffer_size": 11531,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2126,
+								2126
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4240.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "src/lib/kernel/list.h",
 					"settings":
 					{
@@ -805,8 +644,8 @@
 						"selection":
 						[
 							[
-								5792,
-								5792
+								3322,
+								3322
 							]
 						],
 						"settings":
@@ -816,25 +655,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1690.0,
+						"translation.y": 2172.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "src/threads/thread.c",
+					"buffer": 7,
+					"file": "src/lib/kernel/list.c",
 					"settings":
 					{
-						"buffer_size": 16519,
+						"buffer_size": 14628,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6785,
-								6785
+								2622,
+								2626
 							]
 						],
 						"settings":
@@ -844,7 +683,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4084.0,
+						"translation.y": 4085.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -902,8 +741,56 @@
 		"selected_items":
 		[
 			[
+				"list.c",
+				"src/lib/kernel/list.c"
+			],
+			[
 				"list",
 				"src/lib/kernel/list.h"
+			],
+			[
+				"init.h",
+				"src/threads/init.h"
+			],
+			[
+				"init.c",
+				"src/threads/init.c"
+			],
+			[
+				"timer.c",
+				"src/devices/timer.c"
+			],
+			[
+				"int",
+				"src/devices/intq.c"
+			],
+			[
+				"th",
+				"src/threads/thread.c"
+			],
+			[
+				"thread",
+				"src/threads/thread.h"
+			],
+			[
+				"synch",
+				"src/threads/synch.c"
+			],
+			[
+				"sy",
+				"src/threads/synch.h"
+			],
+			[
+				".tags",
+				"src/.tags"
+			],
+			[
+				"thread.h",
+				"src/threads/thread.h"
+			],
+			[
+				"timer",
+				"src/devices/timer.c"
 			],
 			[
 				"thread.c",
