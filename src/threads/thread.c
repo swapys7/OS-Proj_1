@@ -15,6 +15,7 @@
 #include "userprog/process.h"
 #endif
 
+
 /* Random value for struct thread's `magic' member.
    Used to detect stack overflow.  See the big comment at the top
    of thread.h for details. */
@@ -40,6 +41,9 @@ static struct thread *initial_thread;
 
 /* Lock used by allocate_tid(). */
 static struct lock tid_lock;
+
+/* Lock used by check_sleep_list() */
+static struct lock sleep_lock;
 
 /* Stack frame for kernel_thread(). */
 struct kernel_thread_frame
@@ -74,7 +78,7 @@ static void *alloc_frame (struct thread *, size_t size);
 static void schedule (void);
 void thread_schedule_tail (struct thread *prev);
 static tid_t allocate_tid (void);
-void check_sleep_list (int64_t totalTicks);
+void check_sleep_list ();
 
 /* INITIALIZES THE THREADING SYSTEM by transforming the code
    that's currently running into a thread.  This can't work in
@@ -95,6 +99,7 @@ thread_init (void)
   ASSERT (intr_get_level () == INTR_OFF);
 
   lock_init (&tid_lock);
+  lock_init(&sleep_lock);
   list_init (&ready_list);
   list_init (&all_list);
   list_init (&sleep_list);
@@ -129,7 +134,7 @@ void
 thread_tick (void)
 {
   struct thread *t = thread_current ();
-  int64_t totalTicks;
+
   /* Update statistics. */
   if (t == idle_thread)
     idle_ticks++;
@@ -141,38 +146,46 @@ thread_tick (void)
     kernel_ticks++;
 
   /* check whether any sleeping threads can be awoken */
-  totalTicks = timer_ticks ();
-  check_sleep_list (totalTicks);
+  check_sleep_list ();
 
   /* Enforce preemption. */
-  if (++thread_ticks >= TIME_SLICE)
-    intr_yield_on_return ();
+  if (++thread_ticks >= TIME_SLICE) {
+ 	intr_yield_on_return ();
+
+  }
+
 }
 
 /* iterate through sleep_list
     wake any threads that are done sleeping */
 void
-check_sleep_list (int64_t totalTicks)
+check_sleep_list ()
 {
-  /* List traversal. */
-
+  // get current ticks
+  int64_t totalTicks = timer_ticks();
   struct list_elem *e;
 
   for (e = list_begin (&sleep_list);
        e != list_end (&sleep_list);
        e = list_next (e))
   {
+
     struct thread *t = list_entry (e, struct thread, elem);
 
     /* for every sleeping thread whose sleep time is up... */
-    if (t->end_time <= totalTicks) {
-      t->status = THREAD_READY;
-      /* take it off the sleep_list */
+    if (t->status == THREAD_SLEEPING && t->end_time <= totalTicks) {
+    	  /* take it off the sleep_list */
       list_remove(e);
+
       /* put it on the ready_list */
       list_push_back (&ready_list, e);
+      t->status = THREAD_READY;
+
+      break;
     }
+
   }
+
 }
 
 /* Prints thread statistics. */
@@ -307,7 +320,7 @@ thread_current (void)
      of stack, so a few big automatic arrays or moderate
      recursion can cause stack overflow. */
   ASSERT (is_thread (t));
-  ASSERT (t->status == THREAD_RUNNING);
+  ASSERT (t->status == THREAD_RUNNING || t->status == THREAD_SLEEPING);
 
   return t;
 }

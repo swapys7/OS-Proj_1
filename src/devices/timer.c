@@ -31,7 +31,7 @@ static void real_time_sleep (int64_t num, int32_t denom);
 static void real_time_delay (int64_t num, int32_t denom);
 
 /* semaphore for timer_sleep function */
-struct lock timer_sleep_lock;
+static struct lock timer_sleep_lock;
 
 /* Sets up the timer to interrupt TIMER_FREQ times per second,
    and registers the corresponding interrupt. */
@@ -100,8 +100,6 @@ timer_elapsed (int64_t then)
 void
 timer_sleep (int64_t ticks)
 {
-  lock_acquire(&timer_sleep_lock);
-
   int64_t start = timer_ticks ();
 
   ASSERT (intr_get_level () == INTR_ON);
@@ -109,17 +107,24 @@ timer_sleep (int64_t ticks)
   int64_t end = start + ticks;
   struct thread *t = thread_current ();
   ASSERT (t != NULL);
-  t->end_time = end;
 
-  /* take it off the ready_list */
-  list_remove (&t->elem);
-  /* add it to the wait-list*/
-  list_push_back (&sleep_list, &t->elem);
+ // lock_acquire(&timer_sleep_lock);
+  /* take it off the ready_list and let another thread start */
+  list_remove (&(t->elem));
+
+  /* give it a time to sleep and sleep status
+   * and put it on the sleep queue */
+
+  list_push_back (&sleep_list, &(t->elem));
+
+
+  t->end_time = end;
   t->status = THREAD_SLEEPING;
 
-  lock_release(&timer_sleep_lock);
-
   thread_yield ();
+
+ // lock_release(&timer_sleep_lock);
+
 }
 
 /* Sleeps for approximately MS milliseconds.  Interrupts must be
