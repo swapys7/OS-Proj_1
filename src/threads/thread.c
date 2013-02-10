@@ -164,27 +164,52 @@ check_sleep_list ()
   // get current ticks
   int64_t totalTicks = timer_ticks();
   struct list_elem *e;
+  struct list_elem *eNext;
 
-  for (e = list_begin (&sleep_list);
-       e != list_end (&sleep_list);
-       e = list_next (e))
-  {
+  e = list_head (&sleep_list);
+  e = list_next (e);
 
-    struct thread *t = list_entry (e, struct thread, elem);
+  while (e != list_end (&sleep_list) ) {
 
-    /* for every sleeping thread whose sleep time is up... */
-    if (t->status == THREAD_SLEEPING && t->end_time <= totalTicks) {
-    	  /* take it off the sleep_list */
-      list_remove(e);
+    // get the thread struct associated with this list element
+	struct thread *t = list_entry (e, struct thread, elem);
+	if (t->status == THREAD_SLEEPING && t->end_time <= totalTicks) {
 
-      /* put it on the ready_list */
-      list_push_back (&ready_list, e);
+	  /* take it off the sleep_list */
+	  eNext = list_remove(e);
+
+	  /* put it on the ready_list */
+	  list_push_back (&ready_list, e);
       t->status = THREAD_READY;
+	  e = eNext;
 
-      break;
-    }
-
+	} else {
+	  e = list_next (e);
+	}
   }
+
+// **************************************************
+//  OLD VERSION
+//  for (e = list_begin (&sleep_list);
+//       e != list_end (&sleep_list);
+//       e = list_next (e))
+//  {
+//
+//    struct thread *t = list_entry (e, struct thread, elem);
+//
+//    /* for every sleeping thread whose sleep time is up... */
+//    if (t->status == THREAD_SLEEPING && t->end_time <= totalTicks) {
+//    	  /* take it off the sleep_list */
+//      list_remove(e);
+//
+//      /* put it on the ready_list */
+//      list_push_back (&ready_list, e);
+//      t->status = THREAD_READY;
+//
+//      break;
+//    }
+//
+//  }
 
 }
 
