@@ -23,7 +23,7 @@
 
 /* List of processes in THREAD_READY state, that is, processes
    that are ready to run but not actually running. */
-static struct list ready_list;
+struct list ready_list;
 
 /* List of all processes.  Processes are added to this list
    when they are first scheduled and removed when they exit. */
@@ -41,9 +41,6 @@ static struct thread *initial_thread;
 
 /* Lock used by allocate_tid(). */
 static struct lock tid_lock;
-
-/* Lock used by check_sleep_list() */
-static struct lock sleep_lock;
 
 /* Stack frame for kernel_thread(). */
 struct kernel_thread_frame
@@ -99,7 +96,6 @@ thread_init (void)
   ASSERT (intr_get_level () == INTR_OFF);
 
   lock_init (&tid_lock);
-  lock_init(&sleep_lock);
   list_init (&ready_list);
   list_init (&all_list);
   list_init (&sleep_list);
@@ -142,11 +138,13 @@ thread_tick (void)
   else if (t->pagedir != NULL)
     user_ticks++;
 #endif
-  else
+  else {
     kernel_ticks++;
+    /* check whether any sleeping threads can be awoken */
+    check_sleep_list ();
 
-  /* check whether any sleeping threads can be awoken */
-  check_sleep_list ();
+  }
+
 
   /* Enforce preemption. */
   if (++thread_ticks >= TIME_SLICE) {
@@ -161,55 +159,64 @@ thread_tick (void)
 void
 check_sleep_list ()
 {
+ // printf("check_sleep_list: ENTERED\n");
+
+  if(list_empty(&sleep_list)) {
+    //printf("check_sleep_list: list was empty. returning.\n");
+    return;
+
+  }
+
   // get current ticks
-  int64_t totalTicks = timer_ticks();
   struct list_elem *e;
   struct list_elem *eNext;
 
-  e = list_head (&sleep_list);
-  e = list_next (e);
+  printf("check_sleep_list: before iterating.\n");
 
-  while (e != list_end (&sleep_list) ) {
+  if(!list_empty(&sleep_list)) {
+    printf("sleep list has %d elements.\n", list_size(&sleep_list));
+    threads_printsleepelem(&sleep_list);
+
+  } else {
+    printf("check_sleep_list: list was empty.\n");
+
+  }
+
+  e = list_begin(&sleep_list);
+  printf("check_sleep_list: list begun\n");
+  while (e != list_tail (&sleep_list) ) {
 
     // get the thread struct associated with this list element
-	struct thread *t = list_entry (e, struct thread, elem);
-	if (t->status == THREAD_SLEEPING && t->end_time <= totalTicks) {
+	struct thread *t = list_entry (e, struct thread, sleepelem);
 
+    int64_t totalTicks = timer_ticks();
+    long tT = (long)totalTicks;
+    long endT = (long)t->end_time;
+    printf("totalTicks = %d\n", totalTicks);
+	printf("check_sleep_list: on element %s\n", t->name);
+	printf("Thread done sleeping @: %d. Right now it is: %d\n:", endT, tT);
+
+
+	if (endT <= tT) {
+
+	  printf("check_sleep_list: %s has slept too long.\n", t->name);
+
+      printf("check_sleep_list: removing %s.\n", t->name);
 	  /* take it off the sleep_list */
 	  eNext = list_remove(e);
 
+      printf("check_sleep_list: putting onto ready list.\n", t->name);
 	  /* put it on the ready_list */
-	  list_push_back (&ready_list, e);
-      t->status = THREAD_READY;
-	  e = eNext;
-
+	  list_push_back (&ready_list, &(t->elem));
+	  t->magic = THREAD_MAGIC;
+      e = eNext;
 	} else {
+	  printf("check_sleep_list: calling list_next on %s\n", t->name);
 	  e = list_next (e);
 	}
   }
 
-// **************************************************
-//  OLD VERSION
-//  for (e = list_begin (&sleep_list);
-//       e != list_end (&sleep_list);
-//       e = list_next (e))
-//  {
-//
-//    struct thread *t = list_entry (e, struct thread, elem);
-//
-//    /* for every sleeping thread whose sleep time is up... */
-//    if (t->status == THREAD_SLEEPING && t->end_time <= totalTicks) {
-//    	  /* take it off the sleep_list */
-//      list_remove(e);
-//
-//      /* put it on the ready_list */
-//      list_push_back (&ready_list, e);
-//      t->status = THREAD_READY;
-//
-//      break;
-//    }
-//
-//  }
+  printf("check_sleep_list: finished.\n");
 
 }
 
@@ -345,7 +352,7 @@ thread_current (void)
      of stack, so a few big automatic arrays or moderate
      recursion can cause stack overflow. */
   ASSERT (is_thread (t));
-  ASSERT (t->status == THREAD_RUNNING || t->status == THREAD_SLEEPING);
+//  ASSERT (t->status == THREAD_RUNNING || t->status == THREAD_SLEEPING);
 
   return t;
 }
@@ -376,6 +383,62 @@ thread_exit (void)
   thread_current ()->status = THREAD_DYING;
   schedule ();
   NOT_REACHED ();
+}
+
+// ************************************************************
+/* Returns the number of elements in LIST.
+   Runs in O(n) in the number of elements. */
+void
+threads_printelem (struct list *list)
+{
+
+  printf("-------------------\n");
+  if(list_empty(list)) {
+    printf("List is empty.\n");
+
+  } else {
+    struct list_elem *e;
+
+    int iCount = 0;
+
+    for (e = list_begin (list); e != list_end (list); e = list_next (e)) {
+      iCount++;
+      struct thread *t = list_entry(e, struct thread, elem);
+      printf("ListElement #%d.) %s (waiting %d)\n", iCount, t->name, (int) t->end_time);
+    }
+
+  }
+
+  printf("-------------------\n");
+
+}
+
+// ************************************************************
+/* Returns the number of elements in LIST.
+   Runs in O(n) in the number of elements. */
+void
+threads_printsleepelem (struct list *list)
+{
+
+  printf("-------------------\n");
+  if(list_empty(list)) {
+    printf("List is empty.\n");
+
+  } else {
+    struct list_elem *e;
+
+    int iCount = 0;
+
+    for (e = list_begin (list); e != list_end (list); e = list_next (e)) {
+      iCount++;
+      struct thread *t = list_entry(e, struct thread, sleepelem);
+      printf("ListElement #%d.) %s (waiting %d)\n", iCount, t->name, (int) t->end_time);
+    }
+
+  }
+
+  printf("-------------------\n");
+
 }
 
 /* Yields the CPU.  The current thread is not put to sleep and

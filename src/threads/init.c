@@ -77,7 +77,7 @@ int
 main (void)
 {
   char **argv;
-  printf("\n\n\n\ninside main\n\n\n\n");
+  printf("main(): Program Startup.\n");
   /* Clear BSS. */
   bss_init ();
 

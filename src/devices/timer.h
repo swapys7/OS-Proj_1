@@ -27,5 +27,6 @@ void timer_ndelay (int64_t nanoseconds);
 void timer_print_stats (void);
 
 extern struct list sleep_list;
+extern struct list ready_list;
 
 #endif /* devices/timer.h */

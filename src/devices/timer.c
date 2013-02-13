@@ -31,7 +31,7 @@ static void real_time_sleep (int64_t num, int32_t denom);
 static void real_time_delay (int64_t num, int32_t denom);
 
 /* semaphore for timer_sleep function */
-static struct lock timer_sleep_lock;
+static struct semaphore timer_sleep_sema;
 
 /* Sets up the timer to interrupt TIMER_FREQ times per second,
    and registers the corresponding interrupt. */
@@ -43,7 +43,7 @@ timer_init (void)
 
   // init timer sleep lock here with the rest of the timer
   // system
-  lock_init(&timer_sleep_lock);
+  sema_init(&timer_sleep_sema, 1);
 
 }
 
@@ -100,6 +100,9 @@ timer_elapsed (int64_t then)
 void
 timer_sleep (int64_t ticks)
 {
+  //sema_down(&timer_sleep_sema);
+
+  printf("timer_sleep: entered\n");
   int64_t start = timer_ticks ();
 
   ASSERT (intr_get_level () == INTR_ON);
@@ -108,22 +111,31 @@ timer_sleep (int64_t ticks)
   struct thread *t = thread_current ();
   ASSERT (t != NULL);
 
- // lock_acquire(&timer_sleep_lock);
+
+  printf("timer_sleep: removing from ready_list: %s\n", t->name);
   /* take it off the ready_list and let another thread start */
+  printf("Ready list before removal of %s:\n", t->name);
+  threads_printelem(&ready_list);
+  t->end_time = end;
   list_remove (&(t->elem));
+
+  printf("Ready list after removal of %s:\n", t->name);
+  threads_printelem(&ready_list);
 
   /* give it a time to sleep and sleep status
    * and put it on the sleep queue */
+  printf("timer_sleep: changing status to sleeping with end time %d\n", t->end_time);
+  printf("timer_sleep: pushing onto sleep_list %s\n", t->name);
 
-  list_push_back (&sleep_list, &(t->elem));
+  //sema_up(&timer_sleep_sema);
+  list_push_back (&sleep_list, &(t->sleepelem));
 
 
-  t->end_time = end;
-  t->status = THREAD_SLEEPING;
+  printf("Sleep list is now:\n");
+  threads_printsleepelem(&sleep_list);
 
+  printf("timer_sleep: yielding to scheduler\n");
   thread_yield ();
-
- // lock_release(&timer_sleep_lock);
 
 }
 

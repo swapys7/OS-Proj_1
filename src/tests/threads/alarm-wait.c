@@ -21,7 +21,8 @@ test_alarm_single (void)
 void
 test_alarm_multiple (void)
 {
-  printf("\n\n\n\ninside test_multiple\n\n\n\n");
+// this is supposed to be 5,7
+  printf("test_alarm_multiple: trying test_sleep(5,7)\n");
   test_sleep (5, 7);
 }
 
@@ -138,14 +139,16 @@ test_sleep (int thread_cnt, int iterations)
 static void
 sleeper (void *t_)
 {
-  printf("\n\n\n\ninside sleeper\n\n\n");
   struct sleep_thread *t = t_;
+
+  printf("sleeper(): spawned thread for %d\n", t->id);
+
   struct sleep_test *test = t->test;
   int i;
 
   for (i = 1; i <= test->iterations; i++)
     {
-	  printf("i = %d in sleeper", i);
+	  printf("sleeper(): iteration %d of sleep for thread %d, duration %d\n", i,t->id, i* t->duration);
       int64_t sleep_until = test->start + i * t->duration;
       timer_sleep (sleep_until - timer_ticks ());
       lock_acquire (&test->output_lock);

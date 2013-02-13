@@ -154,6 +154,8 @@ struct list_elem *list_back (struct list *);
 
 /* List properties. */
 size_t list_size (struct list *);
+void list_print(struct list *);
+
 bool list_empty (struct list *);
 
 /* Miscellaneous. */

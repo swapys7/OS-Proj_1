@@ -1,5 +1,6 @@
 #include "list.h"
 #include "../debug.h"
+#include <stdio.h>
 
 /* Our doubly linked lists have two header elements: the "head"
    just before the first element and the "tail" just after the
@@ -249,6 +250,7 @@ struct list_elem *
 list_remove (struct list_elem *elem)
 {
   ASSERT (is_interior (elem));
+  //printf("\nlist_removing\n");
   elem->prev->next = elem->next;
   elem->next->prev = elem->prev;
   return elem->next;
@@ -304,6 +306,7 @@ list_size (struct list *list)
     cnt++;
   return cnt;
 }
+
 
 /* Returns true if LIST is empty, false otherwise. */
 bool
