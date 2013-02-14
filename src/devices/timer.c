@@ -24,6 +24,7 @@ static int64_t ticks;
    Initialized by timer_calibrate(). */
 static unsigned loops_per_tick;
 
+
 static intr_handler_func timer_interrupt;
 static bool too_many_loops (unsigned loops);
 static void busy_wait (int64_t loops);
@@ -31,7 +32,7 @@ static void real_time_sleep (int64_t num, int32_t denom);
 static void real_time_delay (int64_t num, int32_t denom);
 
 /* semaphore for timer_sleep function */
-static struct semaphore timer_sleep_sema;
+static struct lock timer_sleep_lock;
 
 /* Sets up the timer to interrupt TIMER_FREQ times per second,
    and registers the corresponding interrupt. */
@@ -43,7 +44,7 @@ timer_init (void)
 
   // init timer sleep lock here with the rest of the timer
   // system
-  sema_init(&timer_sleep_sema, 1);
+  lock_init(&timer_sleep_lock);
 
 }
 
@@ -100,42 +101,39 @@ timer_elapsed (int64_t then)
 void
 timer_sleep (int64_t ticks)
 {
-  //sema_down(&timer_sleep_sema);
-
-  printf("timer_sleep: entered\n");
-  int64_t start = timer_ticks ();
+  lock_acquire(&timer_sleep_lock);
 
   ASSERT (intr_get_level () == INTR_ON);
 
-  int64_t end = start + ticks;
+  intr_disable();
   struct thread *t = thread_current ();
+  int64_t start = timer_ticks ();
+//  printf("ticks is %"PRId64", for thread %s\n", ticks, t->name);
   ASSERT (t != NULL);
 
+//  /* take it off the ready_list and let another thread start */
+//  printf("timer_sleep: removing from ready_list: %s\n", t->name);
+//  printf("Ready list before removal of %s:\n", t->name);
+//  threads_printelem(&ready_list);
+//  list_remove (&(t->elem));
+//  printf("Ready list after removal of %s:\n", t->name);
+//  threads_printelem(&ready_list);
+//  /* give it a time to sleep and sleep status
+//   * and put it on the sleep queue */
+//  printf("timer_sleep: changing status to sleeping with end time %d\n", t->end_time);
 
-  printf("timer_sleep: removing from ready_list: %s\n", t->name);
-  /* take it off the ready_list and let another thread start */
-  printf("Ready list before removal of %s:\n", t->name);
-  threads_printelem(&ready_list);
-  t->end_time = end;
-  list_remove (&(t->elem));
+  //  printf("timer_sleep: entered\n");
+  t->end_time = start + ticks;
 
-  printf("Ready list after removal of %s:\n", t->name);
-  threads_printelem(&ready_list);
-
-  /* give it a time to sleep and sleep status
-   * and put it on the sleep queue */
-  printf("timer_sleep: changing status to sleeping with end time %d\n", t->end_time);
-  printf("timer_sleep: pushing onto sleep_list %s\n", t->name);
-
-  //sema_up(&timer_sleep_sema);
+ // printf("timer_sleep: pushing onto sleep_list %s (now=%"PRId64", sleep until=%"PRId64")\n", t->name, start, t->end_time);
   list_push_back (&sleep_list, &(t->sleepelem));
 
+//  printf("Sleep list is now:\n");
+//  threads_printsleepelem(&sleep_list);
 
-  printf("Sleep list is now:\n");
-  threads_printsleepelem(&sleep_list);
-
-  printf("timer_sleep: yielding to scheduler\n");
-  thread_yield ();
+  intr_enable();
+  lock_release(&timer_sleep_lock);
+  sema_down(&(t->sleepsema));
 
 }
 

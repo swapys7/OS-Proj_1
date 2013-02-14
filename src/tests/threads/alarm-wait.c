@@ -91,6 +91,7 @@ test_sleep (int thread_cnt, int iterations)
       t->duration = (i + 1) * 10;
       t->iterations = 0;
 
+
       snprintf (name, sizeof name, "thread %d", i);
       thread_create (name, PRI_DEFAULT, sleeper, t);
     }
@@ -141,16 +142,17 @@ sleeper (void *t_)
 {
   struct sleep_thread *t = t_;
 
-  printf("sleeper(): spawned thread for %d\n", t->id);
+  //printf("sleeper(): spawned thread %d\n", t->id);
 
   struct sleep_test *test = t->test;
   int i;
 
   for (i = 1; i <= test->iterations; i++)
+
     {
-	  printf("sleeper(): iteration %d of sleep for thread %d, duration %d\n", i,t->id, i* t->duration);
+	 // printf("sleeper(): iteration %d of sleep for thread %d, duration %d\n", i,t->id, i* t->duration);
       int64_t sleep_until = test->start + i * t->duration;
-      timer_sleep (sleep_until - timer_ticks ());
+      timer_sleep (sleep_until - timer_ticks());
       lock_acquire (&test->output_lock);
       *test->output_pos++ = t->id;
       lock_release (&test->output_lock);

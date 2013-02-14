@@ -4,6 +4,7 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
+#include "synch.h"
 
 /* States in a thread's life cycle. */
 enum thread_status
@@ -12,7 +13,6 @@ enum thread_status
     THREAD_READY,       /* Not running but ready to run. */
     THREAD_BLOCKED,     /* Waiting for an event to trigger. */
     THREAD_DYING,       /* About to be destroyed. */
-    THREAD_SLEEPING     /* Waiting for a specified number of 'ticks' to pass. */
   };
 
 /* Thread identifier type.
@@ -97,6 +97,9 @@ struct thread
 
     /* list element for sleeping list */
     struct list_elem sleepelem;
+
+    /* semaphore to make thread stop executing while it's on the sleep list */
+    struct semaphore sleepsema;
 
 #ifdef USERPROG
     /* Owned by userprog/process.c. */

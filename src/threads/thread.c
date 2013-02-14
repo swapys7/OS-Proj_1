@@ -42,6 +42,7 @@ static struct thread *initial_thread;
 /* Lock used by allocate_tid(). */
 static struct lock tid_lock;
 
+
 /* Stack frame for kernel_thread(). */
 struct kernel_thread_frame
   {
@@ -140,11 +141,10 @@ thread_tick (void)
 #endif
   else {
     kernel_ticks++;
-    /* check whether any sleeping threads can be awoken */
-    check_sleep_list ();
 
   }
 
+  check_sleep_list ();
 
   /* Enforce preemption. */
   if (++thread_ticks >= TIME_SLICE) {
@@ -171,19 +171,19 @@ check_sleep_list ()
   struct list_elem *e;
   struct list_elem *eNext;
 
-  printf("check_sleep_list: before iterating.\n");
+//  printf("check_sleep_list: before iterating.\n");
 
-  if(!list_empty(&sleep_list)) {
-    printf("sleep list has %d elements.\n", list_size(&sleep_list));
-    threads_printsleepelem(&sleep_list);
-
-  } else {
-    printf("check_sleep_list: list was empty.\n");
-
-  }
+//  if(!list_empty(&sleep_list)) {
+//    printf("sleep list has %d elements.\n", list_size(&sleep_list));
+//    threads_printsleepelem(&sleep_list);
+//
+//  } else {
+//    printf("check_sleep_list: list was empty.\n");
+//
+//  }
 
   e = list_begin(&sleep_list);
-  printf("check_sleep_list: list begun\n");
+//  printf("check_sleep_list: list begun\n");
   while (e != list_tail (&sleep_list) ) {
 
     // get the thread struct associated with this list element
@@ -192,31 +192,38 @@ check_sleep_list ()
     int64_t totalTicks = timer_ticks();
     long tT = (long)totalTicks;
     long endT = (long)t->end_time;
-    printf("totalTicks = %d\n", totalTicks);
-	printf("check_sleep_list: on element %s\n", t->name);
-	printf("Thread done sleeping @: %d. Right now it is: %d\n:", endT, tT);
+//    printf("totalTicks = %d\n", totalTicks);
+//	printf("check_sleep_list: on element %s\n", t->name);
+//	printf("Thread done sleeping @: %d. Right now it is: %d\n:", endT, tT);
 
 
 	if (endT <= tT) {
+//      printf("-------------------------------------\n");
+//      threads_printsleepelem(&sleep_list);
+//      printf("-------------------------------------\n");
 
-	  printf("check_sleep_list: %s has slept too long.\n", t->name);
 
-      printf("check_sleep_list: removing %s.\n", t->name);
+//      printf("check_sleep_list: removing %s (at tick %d)\n", t->name, tT);
 	  /* take it off the sleep_list */
 	  eNext = list_remove(e);
 
-      printf("check_sleep_list: putting onto ready list.\n", t->name);
-	  /* put it on the ready_list */
-	  list_push_back (&ready_list, &(t->elem));
-	  t->magic = THREAD_MAGIC;
+	  // ??? error without it
+//	  t->magic = THREAD_MAGIC;
+
+//	  printf("-------------------------------------\n");
+//	  threads_printsleepelem(&sleep_list);
+//	  printf("-------------------------------------\n");
+
+
+	  sema_up(&(t->sleepsema));
       e = eNext;
 	} else {
-	  printf("check_sleep_list: calling list_next on %s\n", t->name);
+//	  printf("check_sleep_list: calling list_next on %s\n", t->name);
 	  e = list_next (e);
 	}
   }
 
-  printf("check_sleep_list: finished.\n");
+ // printf("check_sleep_list: finished.\n");
 
 }
 
@@ -606,6 +613,8 @@ init_thread (struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
   t->magic = THREAD_MAGIC;
+  sema_init(&(t->sleepsema), 0);
+
   list_push_back (&all_list, &t->allelem);
 }
 
