@@ -58,6 +58,7 @@ test_priority_fifo (void)
       snprintf (name, sizeof name, "%d", i);
       d->id = i;
       d->iterations = 0;
+      // all these locks seem to be the same lock
       d->lock = &lock;
       d->op = &op;
       thread_create (name, PRI_DEFAULT + 1, simple_thread_func, d);
