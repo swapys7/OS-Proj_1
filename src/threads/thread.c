@@ -508,6 +508,14 @@ thread_set_priority (int new_priority)
   thread_yield ();
 }
 
+/* Donate priority */
+void
+thread_donate_priority(struct thread *lock_holder, int donated_priority) {
+  lock_holder->old_priority = lock_holder->priority;
+  lock_holder->priority = donated_priority;
+
+}
+
 /* Returns the current thread's priority. */
 int
 thread_get_priority (void)

@@ -195,10 +195,25 @@ lock_acquire (struct lock *lock)
 {
   ASSERT (lock != NULL);
   ASSERT (!intr_context ());
+
+  // thread_current() wants the lock
+  // lock->holder HAS the lock.  resolve this.
+  int iCurrPri = thread_current()->priority;
+  int iHolderPri = lock->holder->priority;
+
+  // if we have a higher priority,
+  if(iCurrPri > iHolderPri) {
+    // donate our priority to the lock holder.
+    thread_donate_priority(lock->holder, iCurrPri);
+    thread_yield();
+  }
+
+
   ASSERT (!lock_held_by_current_thread (lock));
 
   sema_down (&lock->semaphore);
   lock->holder = thread_current ();
+
 }
 
 /* Tries to acquires LOCK and returns true if successful or false

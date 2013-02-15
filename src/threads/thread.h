@@ -89,6 +89,7 @@ struct thread
     char name[16];                      /* Name (for debugging purposes). */
     uint8_t *stack;                     /* Saved stack pointer. */
     int priority;                       /* Priority. */
+    int old_priority;
     struct list_elem allelem;           /* List element for all threads list. */
     int64_t end_time;
 
@@ -140,6 +141,7 @@ void thread_foreach (thread_action_func *, void *);
 
 int thread_get_priority (void);
 void thread_set_priority (int);
+void thread_donate_priority(struct thread *lock_holder, int pri);
 
 int thread_get_nice (void);
 void thread_set_nice (int);
