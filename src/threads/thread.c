@@ -541,19 +541,54 @@ thread_set_priority (int new_priority)
   thread_yield ();
 }
 
+// ************************************************************************
 /* Donate priority to a given thread */
 void
-thread_donate_priority (struct thread *lock_holder, int donated_priority)
+thread_donate_priority (struct thread *donate_from, struct thread *donate_to)
 {
-  lock_holder->priority = donated_priority;
+
+ // printf("donating from %s,%d to %s,%d\n", donate_from->name, donate_from->priority,
+ //                                          donate_to->name, donate_to->priority);
+
+  donate_to->priority = donate_from->priority;
  // list_push_back(&(lock_holder->donors), thread_current()->elem);
 
-  //  printf("donate_pri: before removing\n");
-  list_remove(&(lock_holder->elem));
-//  printf("donate_pri: before push back\n");
-  list_push_back(&ready_list[lock_holder->priority], &(lock_holder->elem));
-//  printf("donate_pri: after push back\n");
+  // if who we donated to was on the ready queue, (isn't a blocked waiter on a lock)
+  // then we need to put him on the proper ready queue.
+  if(donate_to->status == THREAD_READY) {
+//    //put priority receiver into ready_list associated with new, higher priority
+    list_remove(&(donate_to->elem));
+    list_push_back(&ready_list[donate_to->priority], &(donate_to->elem));
+//
+  }
+
+
+  // now that we have donated to the lock holder, donate to the holders of the
+  // locks that it needs
+  struct list_elem *e;
+//  // for each lock the donate_to needs
+  for (e = list_begin (&donate_to->lock_need); e != list_end (&donate_to->lock_need); e = list_next (e))
+  {
+//    // get the lock
+    struct lock *l = list_entry(e, struct lock, lock_need_elem);
+//
+//    // donate from who we donated to, to the holder of the lock
+    thread_donate_priority(donate_to, l->holder);
+//
+  }
+
+    // for each waiter on the lock
+   // struct list_elem *eWaiter;
+   // for (eWaiter = list_begin (&(l->holder)); eWaiter != list_end (&(l->semaphore.waiters)); eWaiter = list_next (eWaiter)) {
+      // get the waiter
+   //   struct thread *waiter = list_entry(eWaiter, struct thread, elem);
+      // donate to the waiter also (happens recursively)
+
+    //}
+
 }
+
+// ************************************************************************
 
 void
 thread_restore_priority (struct thread *t)
@@ -721,6 +756,7 @@ init_thread (struct thread *t, const char *name, int priority)
   t->old_priority = priority;
   list_init(&(t->donors));
   list_init(&(t->lock_list));
+  list_init(&(t->lock_need));
 
   t->magic = THREAD_MAGIC;
   sema_init(&(t->sleepsema), 0);
