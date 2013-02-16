@@ -198,23 +198,35 @@ lock_acquire (struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (!intr_context ());
   ASSERT (!lock_held_by_current_thread (lock));
-
+  struct thread *t = thread_current();
   // thread_current() wants the lock, which must be held
   // by another thread.
   if(lock->holder != NULL) {
-    int iCurrPri = thread_current()->priority;
+    int iCurrPri = t->priority;
     int iHolderPri = lock->holder->priority;
 
     // see if we have a higher priority than who has the lock
     if(iCurrPri > iHolderPri) {
       // donate our priority to the lock holder.
       thread_donate_priority(lock->holder, iCurrPri);
+
+      // todo: if this lock holder is waiting on another lock,
+      // donate to the thread holding that lock as well.
+
+      // donate to: lock->holder->lock_waiting_on->holder->lock_wating_on->...
+
+      // B gets donated to, then must donate to A also, since B is
+      // waiting on A.
+
+      // A (waiting on) <- B (holder) <- C (donor)
+
       thread_yield();
     }
   }
 
   sema_down (&lock->semaphore);
-  lock->holder = thread_current ();
+  lock->holder = t;
+  list_push_back (&t->lock_list, &lock->lock_elem);
 
 }
 
@@ -249,9 +261,14 @@ lock_release (struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
 
-  thread_restore_priority (thread_current());
+  // disassociate ourselves from the lock we are releasing.
+  list_remove(&lock->lock_elem);
   lock->holder = NULL;
+
   sema_up (&lock->semaphore);
+
+  // try to find a new priority from all other lock waiters.
+  thread_restore_priority (thread_current());
   thread_yield();
 }
 

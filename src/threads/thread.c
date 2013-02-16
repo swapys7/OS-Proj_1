@@ -32,8 +32,7 @@ struct list ready_list[PRI_MAX + 1];
    when they are first scheduled and removed when they exit. */
 static struct list all_list;
 
-/* List of sleeping processes. Processes that have called
-    thread_sleep() */
+/* List of sleeping processes. Processes that have called thread_sleep() */
 struct list sleep_list;
 
 /* Idle thread. */
@@ -189,7 +188,6 @@ check_sleep_list (void)
 //  }
 
   e = list_begin(&sleep_list);
-//  printf("check_sleep_list: list begun\n");
   while (e != list_tail (&sleep_list) ) {
 
     // get the thread struct associated with this list element
@@ -198,18 +196,11 @@ check_sleep_list (void)
     int64_t totalTicks = timer_ticks();
     long tT = (long)totalTicks;
     long endT = (long)t->end_time;
-//    printf("totalTicks = %d\n", totalTicks);
-//	printf("check_sleep_list: on element %s\n", t->name);
 //	printf("Thread done sleeping @: %d. Right now it is: %d\n:", endT, tT);
 
 
 	if (endT <= tT) {
-//      printf("-------------------------------------\n");
-//      threads_printsleepelem(&sleep_list);
-//      printf("-------------------------------------\n");
 
-
-//      printf("check_sleep_list: removing %s (at tick %d)\n", t->name, tT);
 	  /* take it off the sleep_list */
 	  eNext = list_remove(e);
 
@@ -555,6 +546,7 @@ void
 thread_donate_priority (struct thread *lock_holder, int donated_priority)
 {
   lock_holder->priority = donated_priority;
+ // list_push_back(&(lock_holder->donors), thread_current()->elem);
 
   //  printf("donate_pri: before removing\n");
   list_remove(&(lock_holder->elem));
@@ -566,11 +558,39 @@ thread_donate_priority (struct thread *lock_holder, int donated_priority)
 void
 thread_restore_priority (struct thread *t)
 {
-  t->priority = t->old_priority;
-//  printf("\nthread %s has priority %d\n", t->name, t->priority);
- // thread_yield ();
-  // list_remove(&(t->elem));
-  // list_push_back(&ready_list[t->priority], &(t->elem));
+  /*
+   * When a thread releases a lock, but it's still holding another lock,
+   * it needs to update its priority to be equal to the highest of the waiters
+   * on the remaining locks it carries.
+  */
+
+  struct list_elem *e;
+  // start with our original priority
+  int maxPri = t->old_priority;
+  // for each lock we hold
+  for (e = list_begin (&t->lock_list); e != list_end (&t->lock_list); e = list_next (e))
+  {
+    struct lock *l = list_entry (e, struct lock, lock_elem);
+    struct list_elem *waiter;
+    // for each waiter on that lock
+    for (waiter = list_begin (&l->semaphore.waiters); waiter != list_end (&l->semaphore.waiters);
+         waiter = list_next (waiter))
+    {
+      // get thread who is that waiter.
+      struct thread *tWaiter = list_entry(waiter, struct thread, elem);
+
+      // if that waiter has a higher priority than our max found so far
+      if (tWaiter->priority > maxPri)
+      {
+        // get a new max of that thread's priority.
+        maxPri = tWaiter->priority;
+      }
+    }
+  }
+
+  // our priority should now be the max of all of our waiters.
+  t->priority = maxPri;
+
 }
 
 
@@ -696,7 +716,12 @@ init_thread (struct thread *t, const char *name, int priority)
   strlcpy (t->name, name, sizeof t->name);
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
+
+  // start with old priority and empty list of donors.
   t->old_priority = priority;
+  list_init(&(t->donors));
+  list_init(&(t->lock_list));
+
   t->magic = THREAD_MAGIC;
   sema_init(&(t->sleepsema), 0);
 

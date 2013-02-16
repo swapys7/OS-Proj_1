@@ -89,9 +89,12 @@ struct thread
     char name[16];                      /* Name (for debugging purposes). */
     uint8_t *stack;                     /* Saved stack pointer. */
     int priority;                       /* Priority. */
+
     int old_priority;
+    struct list donors;
+
     struct list_elem allelem;           /* List element for all threads list. */
-    int64_t end_time;
+    int64_t end_time;                   /* Time the thread is scheduled to wake up */
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
@@ -99,8 +102,14 @@ struct thread
     /* list element for sleeping list */
     struct list_elem sleepelem;
 
+    /* list element for being on donor list.
+     * holds each donor. */
+    struct list_elem donorelem;
+
     /* semaphore to make thread stop executing while it's on the sleep list */
     struct semaphore sleepsema;
+
+    struct list lock_list;           /* list of locks currently held by this thread */
 
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
