@@ -79,7 +79,7 @@ static void *alloc_frame (struct thread *, size_t size);
 static void schedule (void);
 void thread_schedule_tail (struct thread *prev);
 static tid_t allocate_tid (void);
-void check_sleep_list ();
+void check_sleep_list (void);
 
 /* INITIALIZES THE THREADING SYSTEM by transforming the code
    that's currently running into a thread.  This can't work in
@@ -163,7 +163,7 @@ thread_tick (void)
 /* iterate through sleep_list
     wake any threads that are done sleeping */
 void
-check_sleep_list ()
+check_sleep_list (void)
 {
  // printf("check_sleep_list: ENTERED\n");
 
@@ -376,7 +376,7 @@ thread_current (void)
      of stack, so a few big automatic arrays or moderate
      recursion can cause stack overflow. */
   ASSERT (is_thread (t));
-//  ASSERT (t->status == THREAD_RUNNING || t->status == THREAD_SLEEPING);
+  ASSERT (t->status == THREAD_RUNNING);
 
   return t;
 }
@@ -465,6 +465,49 @@ threads_printsleepelem (struct list *list)
 
 }
 
+//// **************************************************************
+//list_less_func LessPriorityThan(const struct list_elem *a,
+//                                const struct list_elem *b,
+//                                void *aux) {
+//
+//  // get the two threads to compare
+//  struct thread *tA = list_entry(a, struct thread, elem);
+//  struct thread *tB = list_entry(b, struct thread, elem);
+//
+//  return(tA->priority < tB->priority);
+//
+//}
+
+// ***************************************************************
+/* removes the thread with the highest priority
+ * from the list of threads waiting on a lock */
+struct list_elem *
+list_pop_highest_priority (struct list *list)
+{
+  struct list_elem *e, *next;
+  struct thread *t;
+  int maxPriority = -1;
+  for (e = list_begin (list); e != list_end (list); e = list_next (e)) {
+    t = list_entry(e, struct thread, elem);
+    if (maxPriority < t->priority) {
+      maxPriority = t->priority;
+    }
+  }
+
+  e = list_head (list);
+  while ((next = list_next (e)) != list_end (list)) {
+    t = list_entry(e, struct thread, elem);
+    if (t->priority == maxPriority){
+      list_remove(e);
+      return e;
+    }
+  }
+  printf("Error: list_pop_highest_priority");
+  return NULL;
+}
+
+// **************************************************************
+
 /* Yields the CPU.  The current thread is not put to sleep and
    may be scheduled again immediately at the scheduler's whim. */
 void
@@ -508,13 +551,27 @@ thread_set_priority (int new_priority)
   thread_yield ();
 }
 
-/* Donate priority */
+/* Donate priority to a given thread */
 void
-thread_donate_priority(struct thread *lock_holder, int donated_priority) {
-  lock_holder->old_priority = lock_holder->priority;
+thread_donate_priority (struct thread *lock_holder, int donated_priority)
+{
   lock_holder->priority = donated_priority;
 
+  //  printf("donate_pri: before removing\n");
+  list_remove(&(lock_holder->elem));
+//  printf("donate_pri: before push back\n");
+  list_push_back(&ready_list[lock_holder->priority], &(lock_holder->elem));
+//  printf("donate_pri: after push back\n");
 }
+
+void
+thread_restore_priority (struct thread *t)
+{
+  t->priority = t->old_priority;
+//  printf("\nthread %s has priority %d\n", t->name, t->priority);
+ // thread_yield ();
+}
+
 
 /* Returns the current thread's priority. */
 int
@@ -638,6 +695,7 @@ init_thread (struct thread *t, const char *name, int priority)
   strlcpy (t->name, name, sizeof t->name);
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
+  t->old_priority = priority;
   t->magic = THREAD_MAGIC;
   sema_init(&(t->sleepsema), 0);
 

@@ -114,9 +114,11 @@ sema_up (struct semaphore *sema)
   ASSERT (sema != NULL);
 
   old_level = intr_disable ();
-  if (!list_empty (&sema->waiters))
-    thread_unblock (list_entry (list_pop_front (&sema->waiters),
+  if (!list_empty (&sema->waiters)) {
+    thread_unblock (list_entry (list_pop_highest_priority (&sema->waiters),
                                 struct thread, elem));
+
+  }
   sema->value++;
   intr_set_level (old_level);
 }
@@ -195,21 +197,23 @@ lock_acquire (struct lock *lock)
 {
   ASSERT (lock != NULL);
   ASSERT (!intr_context ());
-
-  // thread_current() wants the lock
-  // lock->holder HAS the lock.  resolve this.
-  int iCurrPri = thread_current()->priority;
-  int iHolderPri = lock->holder->priority;
-
-  // if we have a higher priority,
-  if(iCurrPri > iHolderPri) {
-    // donate our priority to the lock holder.
-    thread_donate_priority(lock->holder, iCurrPri);
-    thread_yield();
-  }
-
-
   ASSERT (!lock_held_by_current_thread (lock));
+
+  // thread_current() wants the lock, which must be held
+  // by another thread.
+  if(lock->holder != NULL) {
+    int iCurrPri = thread_current()->priority;
+    int iHolderPri = lock->holder->priority;
+
+    // see if we have a higher priority than who has the lock
+    if(iCurrPri > iHolderPri) {
+      // donate our priority to the lock holder.
+      //printf("donating from %s to %s\n", thread_current()->name, lock->holder->name);
+
+      thread_donate_priority(lock->holder, iCurrPri);
+      thread_yield();
+    }
+  }
 
   sema_down (&lock->semaphore);
   lock->holder = thread_current ();
@@ -247,8 +251,10 @@ lock_release (struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
 
+  thread_restore_priority (thread_current());
   lock->holder = NULL;
   sema_up (&lock->semaphore);
+  thread_yield();
 }
 
 /* Returns true if the current thread holds LOCK, false
