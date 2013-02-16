@@ -537,7 +537,45 @@ thread_foreach (thread_action_func *func, void *aux)
 void
 thread_set_priority (int new_priority)
 {
-  thread_current()->old_priority = new_priority;
+
+  int switchPri = 1;
+
+  if(!list_empty(&thread_current()->lock_list)) {
+    struct list_elem *e;
+    // for each lock this thread holds
+    for (e  = list_begin (&thread_current()->lock_list);
+         e != list_end   (&thread_current()->lock_list);
+         e  = list_next  (e))
+      {
+        // for each waiter on the lock
+        struct lock *l = list_entry(e, struct lock, lock_elem);
+        struct list_elem *eWaiter;
+        for (eWaiter = list_begin (&(l->semaphore.waiters));
+             eWaiter != list_end (&(l->semaphore.waiters));
+             eWaiter = list_next (eWaiter)) {
+
+          // get the waiter
+          struct thread *waiter = list_entry(eWaiter, struct thread, elem);
+
+          // if the waiter has a higher priority than the new_priority
+          // don't set priority YET
+          if (waiter->priority > new_priority) {
+            switchPri = 0;
+            break;
+          }
+        }
+      }
+  }
+  // set priority now
+  if (switchPri)
+  {
+    thread_current()->priority = new_priority;
+  }
+  // save new_priority for later
+  else
+  {
+    thread_current()->old_priority = new_priority;
+  }
   thread_yield ();
 }
 
