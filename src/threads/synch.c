@@ -224,7 +224,7 @@ lock_acquire (struct lock *lock)
 
       // A (waiting on) <- B (holder) <- C (donor)
 
-      thread_yield();
+     // thread_yield();
     }
   }
 
@@ -279,6 +279,7 @@ lock_release (struct lock *lock)
   // try to find a new priority from all other lock waiters.
   thread_restore_priority (thread_current());
   thread_yield();
+
 }
 
 /* Returns true if the current thread holds LOCK, false

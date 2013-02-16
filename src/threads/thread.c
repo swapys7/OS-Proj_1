@@ -570,6 +570,7 @@ thread_set_priority (int new_priority)
   if (switchPri)
   {
     thread_current()->priority = new_priority;
+
   }
   // save new_priority for later
   else
@@ -897,7 +898,6 @@ schedule (void)
 {
   struct thread *cur = running_thread ();
   struct thread *next = next_thread_to_run ();
- // printf("\nschedule: next_thread_to_run is: %s\n", next->name);
   struct thread *prev = NULL;
 
   ASSERT (intr_get_level () == INTR_OFF);
