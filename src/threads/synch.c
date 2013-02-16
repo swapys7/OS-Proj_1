@@ -114,8 +114,8 @@ sema_up (struct semaphore *sema)
   ASSERT (sema != NULL);
 
   old_level = intr_disable ();
-  if (!list_empty (&sema->waiters)) {
-    thread_unblock (list_entry (list_pop_highest_priority (&sema->waiters),
+  if (!list_empty (&(sema->waiters))) {
+    thread_unblock (list_entry (list_pop_highest_priority (&(sema->waiters)),
                                 struct thread, elem));
 
   }
@@ -208,8 +208,6 @@ lock_acquire (struct lock *lock)
     // see if we have a higher priority than who has the lock
     if(iCurrPri > iHolderPri) {
       // donate our priority to the lock holder.
-      //printf("donating from %s to %s\n", thread_current()->name, lock->holder->name);
-
       thread_donate_priority(lock->holder, iCurrPri);
       thread_yield();
     }

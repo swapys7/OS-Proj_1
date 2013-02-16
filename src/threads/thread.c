@@ -494,8 +494,7 @@ list_pop_highest_priority (struct list *list)
     }
   }
 
-  e = list_head (list);
-  while ((next = list_next (e)) != list_end (list)) {
+  for (e = list_begin (list); e != list_end (list); e = list_next (e)) {
     t = list_entry(e, struct thread, elem);
     if (t->priority == maxPriority){
       list_remove(e);
@@ -570,6 +569,8 @@ thread_restore_priority (struct thread *t)
   t->priority = t->old_priority;
 //  printf("\nthread %s has priority %d\n", t->name, t->priority);
  // thread_yield ();
+  // list_remove(&(t->elem));
+  // list_push_back(&ready_list[t->priority], &(t->elem));
 }
 
 
