@@ -496,6 +496,32 @@ list_pop_highest_priority (struct list *list)
   return NULL;
 }
 
+/* Finds highest priority thread waiting on a condition variable */
+struct list_elem *
+list_pop_sema_highest_waiters (struct list *list)
+{
+  // we already know the list isn't empty
+  struct list_elem *e, *best, *te;
+  struct thread *t;
+  struct semaphore_elem *se;
+  int maxPriority = -1;
+  for (e = list_begin (list); e != list_end (list); e = list_next (e)) {
+    se = list_entry(e, struct semaphore_elem, elem);
+    te = list_begin(&se->semaphore.waiters);
+    t = list_entry(te, struct thread, elem);
+
+    if (maxPriority < t->priority) {
+      maxPriority = t->priority;
+      best = e;
+    }
+  }
+
+  ASSERT(best != NULL);
+  list_remove(best);
+  return best;
+}
+
+
 // **************************************************************
 
 /* Yields the CPU.  The current thread is not put to sleep and

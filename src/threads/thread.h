@@ -155,6 +155,9 @@ void thread_donate_priority(struct thread *donate_from, struct thread *donate_to
 void thread_restore_priority (struct thread *t);
 struct list_elem *list_pop_highest_priority (struct list *list);
 
+/* Finds highest priority thread waiting on a condition variable */
+struct list_elem *list_pop_sema_highest_waiters (struct list *list);
+
 int thread_get_nice (void);
 void thread_set_nice (int);
 int thread_get_recent_cpu (void);
