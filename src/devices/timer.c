@@ -102,39 +102,20 @@ void
 timer_sleep (int64_t ticks)
 {
   lock_acquire(&timer_sleep_lock);
-
   ASSERT (intr_get_level () == INTR_ON);
 
   intr_disable();
+
   struct thread *t = thread_current ();
   int64_t start = timer_ticks ();
-//  printf("ticks is %"PRId64", for thread %s\n", ticks, t->name);
   ASSERT (t != NULL);
-
-//  /* take it off the ready_list and let another thread start */
-//  printf("timer_sleep: removing from ready_list: %s\n", t->name);
-//  printf("Ready list before removal of %s:\n", t->name);
-//  threads_printelem(&ready_list);
-//  list_remove (&(t->elem));
-//  printf("Ready list after removal of %s:\n", t->name);
-//  threads_printelem(&ready_list);
-//  /* give it a time to sleep and sleep status
-//   * and put it on the sleep queue */
-//  printf("timer_sleep: changing status to sleeping with end time %d\n", t->end_time);
-
-  //  printf("timer_sleep: entered\n");
   t->end_time = start + ticks;
-
- // printf("timer_sleep: pushing onto sleep_list %s (now=%"PRId64", sleep until=%"PRId64")\n", t->name, start, t->end_time);
   list_push_back (&sleep_list, &(t->sleepelem));
 
-//  printf("Sleep list is now:\n");
-//  threads_printsleepelem(&sleep_list);
-
   intr_enable();
+
   lock_release(&timer_sleep_lock);
   sema_down(&(t->sleepsema));
-
 }
 
 /* Sleeps for approximately MS milliseconds.  Interrupts must be

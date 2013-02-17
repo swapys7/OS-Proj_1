@@ -91,7 +91,6 @@ struct thread
     int priority;                       /* Priority. */
 
     int old_priority;
-    struct list donors;
 
     struct list_elem allelem;           /* List element for all threads list. */
     int64_t end_time;                   /* Time the thread is scheduled to wake up */
@@ -101,10 +100,6 @@ struct thread
 
     /* list element for sleeping list */
     struct list_elem sleepelem;
-
-    /* list element for being on donor list.
-     * holds each donor. */
-    struct list_elem donorelem;
 
     /* semaphore to make thread stop executing while it's on the sleep list */
     struct semaphore sleepsema;

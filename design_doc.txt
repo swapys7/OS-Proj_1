@@ -199,7 +199,7 @@ has a priority equal to that of the highest thread waiting on it.
 ---- RATIONALE ----
 
 This design has the advantage of simplicity. Instead of mainting proper
-sorting of the donor queue, our style of synchroniztion, described in in brief the
+sorting of the donor queue, our style of synchroniztion, described in the
 SYNCHRONIZATION section, allowed us to forget about keeping a lot of priority-
 related information stored on each thread. Instead, we dynamically calculted
 the threads new effective priority only when it released a lock, which was the

@@ -164,10 +164,8 @@ thread_tick (void)
 void
 check_sleep_list (void)
 {
- // printf("check_sleep_list: ENTERED\n");
 
   if(list_empty(&sleep_list)) {
-    //printf("check_sleep_list: list was empty. returning.\n");
     return;
 
   }
@@ -175,17 +173,6 @@ check_sleep_list (void)
   // get current ticks
   struct list_elem *e;
   struct list_elem *eNext;
-
-//  printf("check_sleep_list: before iterating.\n");
-
-//  if(!list_empty(&sleep_list)) {
-//    printf("sleep list has %d elements.\n", list_size(&sleep_list));
-//    threads_printsleepelem(&sleep_list);
-//
-//  } else {
-//    printf("check_sleep_list: list was empty.\n");
-//
-//  }
 
   e = list_begin(&sleep_list);
   while (e != list_tail (&sleep_list) ) {
@@ -196,32 +183,17 @@ check_sleep_list (void)
     int64_t totalTicks = timer_ticks();
     long tT = (long)totalTicks;
     long endT = (long)t->end_time;
-//	printf("Thread done sleeping @: %d. Right now it is: %d\n:", endT, tT);
 
-
+    // if thread is done sleeping
 	if (endT <= tT) {
-
 	  /* take it off the sleep_list */
 	  eNext = list_remove(e);
-
-	  // ??? error without it
-//	  t->magic = THREAD_MAGIC;
-
-//	  printf("-------------------------------------\n");
-//	  threads_printsleepelem(&sleep_list);
-//	  printf("-------------------------------------\n");
-
-
 	  sema_up(&(t->sleepsema));
       e = eNext;
 	} else {
-//	  printf("check_sleep_list: calling list_next on %s\n", t->name);
 	  e = list_next (e);
 	}
   }
-
- // printf("check_sleep_list: finished.\n");
-
 }
 
 /* Prints thread statistics. */
@@ -294,7 +266,7 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
-  // if newly added thread higher pri than what's running,
+  // if newly added thread higher priority than what's running,
   // yield current to what we just added.
   struct thread *cur = thread_current();
 
@@ -400,76 +372,6 @@ thread_exit (void)
   NOT_REACHED ();
 }
 
-// ************************************************************
-/* Returns the number of elements in LIST.
-   Runs in O(n) in the number of elements. */
-void
-threads_printelem (struct list *list)
-{
-
-  printf("-------------------\n");
-  if(list_empty(list)) {
-    printf("List is empty.\n");
-
-  } else {
-    struct list_elem *e;
-
-    int iCount = 0;
-
-    for (e = list_begin (list); e != list_end (list); e = list_next (e)) {
-      iCount++;
-      struct thread *t = list_entry(e, struct thread, elem);
-      printf("ListElement #%d.) %s (waiting %d)\n", iCount, t->name, (int) t->end_time);
-    }
-
-  }
-
-  printf("-------------------\n");
-
-}
-
-// ************************************************************
-/* Returns the number of elements in LIST.
-   Runs in O(n) in the number of elements. */
-void
-threads_printsleepelem (struct list *list)
-{
-
-  printf("-------------------\n");
-  if(list_empty(list)) {
-    printf("List is empty.\n");
-
-  } else {
-    struct list_elem *e;
-
-    int iCount = 0;
-
-    for (e = list_begin (list); e != list_end (list); e = list_next (e)) {
-      iCount++;
-      struct thread *t = list_entry(e, struct thread, sleepelem);
-      printf("ListElement #%d.) %s (waiting %d)\n", iCount, t->name, (int) t->end_time);
-    }
-
-  }
-
-  printf("-------------------\n");
-
-}
-
-//// **************************************************************
-//list_less_func LessPriorityThan(const struct list_elem *a,
-//                                const struct list_elem *b,
-//                                void *aux) {
-//
-//  // get the two threads to compare
-//  struct thread *tA = list_entry(a, struct thread, elem);
-//  struct thread *tB = list_entry(b, struct thread, elem);
-//
-//  return(tA->priority < tB->priority);
-//
-//}
-
-// ***************************************************************
 /* removes the thread with the highest priority
  * from the list of threads waiting on a lock */
 struct list_elem *
@@ -572,25 +474,25 @@ thread_set_priority (int new_priority)
     for (e  = list_begin (&thread_current()->lock_list);
          e != list_end   (&thread_current()->lock_list);
          e  = list_next  (e))
-      {
-        // for each waiter on the lock
-        struct lock *l = list_entry(e, struct lock, lock_elem);
-        struct list_elem *eWaiter;
-        for (eWaiter = list_begin (&(l->semaphore.waiters));
-             eWaiter != list_end (&(l->semaphore.waiters));
-             eWaiter = list_next (eWaiter)) {
+    {
+      // for each waiter on the lock
+      struct lock *l = list_entry(e, struct lock, lock_elem);
+      struct list_elem *eWaiter;
+      for (eWaiter = list_begin (&(l->semaphore.waiters));
+           eWaiter != list_end (&(l->semaphore.waiters));
+           eWaiter = list_next (eWaiter)) {
 
-          // get the waiter
-          struct thread *waiter = list_entry(eWaiter, struct thread, elem);
+        // get the waiter
+        struct thread *waiter = list_entry(eWaiter, struct thread, elem);
 
-          // if the waiter has a higher priority than the new_priority
-          // don't set priority YET
-          if (waiter->priority > new_priority) {
-            switchPri = 0;
-            break;
-          }
+        // if the waiter has a higher priority than the new_priority
+        // don't set priority YET
+        if (waiter->priority > new_priority) {
+          switchPri = 0;
+          break;
         }
       }
+    }
   }
   // set priority now
   if (switchPri)
@@ -610,57 +512,38 @@ void
 thread_donate_priority (struct thread *donate_from, struct thread *donate_to)
 {
 
- // printf("donating from %s,%d to %s,%d\n", donate_from->name, donate_from->priority,
- //                                          donate_to->name, donate_to->priority);
-
   donate_to->priority = donate_from->priority;
- // list_push_back(&(lock_holder->donors), thread_current()->elem);
 
   // if who we donated to was on the ready queue, (isn't a blocked waiter on a lock)
   // then we need to put him on the proper ready queue.
   if(donate_to->status == THREAD_READY) {
-//    //put priority receiver into ready_list associated with new, higher priority
+    //put priority receiver into ready_list associated with new, higher priority
     list_remove(&(donate_to->elem));
     list_push_back(&ready_list[donate_to->priority], &(donate_to->elem));
-//
   }
-
 
   // now that we have donated to the lock holder, donate to the holders of the
   // locks that it needs
   struct list_elem *e;
-//  // for each lock the donate_to needs
+  // for each lock the donate_to needs
   for (e = list_begin (&donate_to->lock_need); e != list_end (&donate_to->lock_need); e = list_next (e))
   {
-//    // get the lock
+    // get the lock
     struct lock *l = list_entry(e, struct lock, lock_need_elem);
-//
-//    // donate from who we donated to, to the holder of the lock
+    // donate from who we donated to, to the holder of the lock
     thread_donate_priority(donate_to, l->holder);
-//
   }
-
-    // for each waiter on the lock
-   // struct list_elem *eWaiter;
-   // for (eWaiter = list_begin (&(l->holder)); eWaiter != list_end (&(l->semaphore.waiters)); eWaiter = list_next (eWaiter)) {
-      // get the waiter
-   //   struct thread *waiter = list_entry(eWaiter, struct thread, elem);
-      // donate to the waiter also (happens recursively)
-
-    //}
-
 }
 
 // ************************************************************************
-
+/*
+ * When a thread releases a lock, but it's still holding another lock,
+ * it needs to update its priority to be equal to the highest of the waiters
+ * on the remaining locks it carries.
+*/
 void
 thread_restore_priority (struct thread *t)
 {
-  /*
-   * When a thread releases a lock, but it's still holding another lock,
-   * it needs to update its priority to be equal to the highest of the waiters
-   * on the remaining locks it carries.
-  */
   int maxPri = t->old_priority;
   struct list_elem *e;
   // start with our original priority
@@ -813,9 +696,7 @@ init_thread (struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
 
-  // start with old priority and empty list of donors.
   t->old_priority = priority;
-  list_init(&(t->donors));
   list_init(&(t->lock_list));
   list_init(&(t->lock_need));
 
@@ -851,10 +732,6 @@ next_thread_to_run (void)
   // return the first thread on the highest-priority list
   for (i = PRI_MAX; i >= 0; i--) {
     if(!list_empty(&ready_list[i])){
-//      printf("\n---------about to choose the first of queue %d: -------\n", i);
-//      threads_printelem(&ready_list[i]);
-//      printf("\n---------------------------------------------\n");
-
       return list_entry(list_pop_front(&ready_list[i]), struct thread, elem);
     }
   }

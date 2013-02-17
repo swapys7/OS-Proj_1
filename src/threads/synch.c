@@ -118,9 +118,7 @@ sema_up (struct semaphore *sema)
   if (!list_empty (&(sema->waiters))) {
     thread_unblock (list_entry (list_pop_highest_priority (&(sema->waiters)),
                                 struct thread, elem));
-
   }
-
   sema->value++;
   intr_set_level (old_level);
 
@@ -221,18 +219,6 @@ lock_acquire (struct lock *lock)
     if(iCurrPri > iHolderPri) {
       // donate our priority to the lock holder.
       thread_donate_priority(t, lock->holder);
-
-      // todo: if this lock holder is waiting on another lock,
-      // donate to the thread holding that lock as well.
-
-      // donate to: lock->holder->lock_waiting_on->holder->lock_wating_on->...
-
-      // B gets donated to, then must donate to A also, since B is
-      // waiting on A.
-
-      // A (waiting on) <- B (holder) <- C (donor)
-
-     // thread_yield();
     }
   }
 
