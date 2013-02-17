@@ -573,10 +573,8 @@ thread_set_priority (int new_priority)
 
   }
   // save new_priority for later
-  else
-  {
-    thread_current()->old_priority = new_priority;
-  }
+
+  thread_current()->old_priority = new_priority;
   thread_yield ();
 }
 
@@ -637,10 +635,9 @@ thread_restore_priority (struct thread *t)
    * it needs to update its priority to be equal to the highest of the waiters
    * on the remaining locks it carries.
   */
-
+  int maxPri = t->old_priority;
   struct list_elem *e;
   // start with our original priority
-  int maxPri = t->old_priority;
   // for each lock we hold
   for (e = list_begin (&t->lock_list); e != list_end (&t->lock_list); e = list_next (e))
   {
@@ -661,9 +658,8 @@ thread_restore_priority (struct thread *t)
       }
     }
   }
-
-  // our priority should now be the max of all of our waiters.
   t->priority = maxPri;
+  // our priority should now be the max of all of our waiters.
 
 }
 
